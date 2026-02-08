@@ -35,14 +35,14 @@ Package: com.cloudysnow.btloader
 Version: 1.0.2
 Architecture: iphoneos-arm
 Maintainer: CloudySn0w
-Installed-Size: 344
+Installed-Size: 168
 Depends: mobilesubstrate (>= 0.9.5000)
 Conflicts: app.enmity, mod.vendetta, app.unbound
 Filename: debs/com.cloudysnow.btloader_1.0.2_iphoneos-arm.deb
-Size: 41432
-MD5sum: 3bac7af63b8a2f4581179dc86cb3b20a
-SHA1: 68e9e15c4c5ead900c6bc74830bc9ee0c46021a6
-SHA256: 98dfbef8ce20a508742dbd5fe98066976446c10a74bd0d06f2c4a49eb75ac87f
+Size: 28998
+MD5sum: 86c8560365c39026c7483f461d2a9016
+SHA1: eb4fd301e67bed985527b41dd0fa938f753cbf62
+SHA256: ef784ec19c628c064e472f5c19ec93f0d6e6dd5235f0c5eb32b503c67c4dc5cb
 Section: Tweaks
 Description: A client modification for Discord's mobile app.
 Author: CloudySn0w
@@ -85,14 +85,31 @@ Package: com.cloudysnow.btloader
 Version: 1.0.2
 Architecture: iphoneos-arm64
 Maintainer: CloudySn0w
-Installed-Size: 344
+Installed-Size: 168
 Depends: mobilesubstrate (>= 0.9.5000)
 Conflicts: app.enmity, mod.vendetta, app.unbound
 Filename: debs/com.cloudysnow.btloader_1.0.2_iphoneos-arm64.deb
-Size: 41770
-MD5sum: 9c10709f336384afe319f90449650564
-SHA1: ea309a98c8b262dd9c3b762fca298baf0e06da40
-SHA256: 3ee34c9494aede3718f5df3fe6f0fc6e5a63faef7dfad1d26060248de9f32261
+Size: 29066
+MD5sum: 1b7b3ad66dba47eb4a65272033febcad
+SHA1: 6062e2a84b73839b1c9f115bd66fa0cc9ee45feb
+SHA256: c9920b02549dcdec77bde48026e89f4fe9407d3e681f12adc1c9c6f9d3f134f6
+Section: Tweaks
+Description: A client modification for Discord's mobile app.
+Author: CloudySn0w
+Name: BTLoader
+
+Package: com.cloudysnow.btloader
+Version: 1.0.2
+Architecture: iphoneos-arm64e
+Maintainer: CloudySn0w
+Installed-Size: 168
+Depends: mobilesubstrate (>= 0.9.5000)
+Conflicts: app.enmity, mod.vendetta, app.unbound
+Filename: debs/com.cloudysnow.btloader_1.0.2_iphoneos-arm64e.deb
+Size: 29428
+MD5sum: c78b9c8bafe5a4ae3611123133dd0147
+SHA1: c5268ad86b384a2c0b4a2402aeea3e58833f05fa
+SHA256: d386cc975ea9ca1bead01d7eba3a7752d3aa3cb933d8cf0653571a5a4f04ac48
 Section: Tweaks
 Description: A client modification for Discord's mobile app.
 Author: CloudySn0w
