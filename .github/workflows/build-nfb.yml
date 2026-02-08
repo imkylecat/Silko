@@ -1,0 +1,151 @@
+name: Build NeoFreeBird (Rootless + Rootful)
+
+on:
+  workflow_dispatch:
+    inputs:
+      sdk_version:
+        description: "iOS SDK Version"
+        default: "16.5"
+        required: true
+        type: string
+      target_version:
+        description: "Target iOS Version"
+        default: "14.0"
+        required: true
+        type: string
+      commit_id:
+        description: "(Optional) NeoFreeBird commit ID to build at"
+        default: ""
+        required: false
+        type: string
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build NeoFreeBird (${{ matrix.mode }})
+    runs-on: macos-14
+    permissions:
+      contents: write
+
+    strategy:
+      matrix:
+        mode: [rootless, rootfull]
+
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v4
+
+      - name: Checkout NeoFreeBird/tweak
+        uses: actions/checkout@v4
+        with:
+          repository: NeoFreeBird/tweak
+          ref: ${{ inputs.commit_id || 'main' }}
+          path: nfb
+          submodules: recursive
+
+      - name: Install Dependencies
+        run: brew install make dpkg ldid
+
+      - name: Add GNU Make to PATH
+        run: echo "$(brew --prefix make)/libexec/gnubin" >> "$GITHUB_PATH"
+
+      - name: Download Theos
+        uses: actions/checkout@v4
+        with:
+          repository: theos/theos
+          ref: master
+          path: theos
+          submodules: recursive
+
+      - name: iOS SDK Caching
+        id: SDK
+        uses: actions/cache@v4
+        env:
+          cache-name: iOS-${{ inputs.sdk_version }}-SDK
+        with:
+          path: theos/sdks/
+          key: ${{ env.cache-name }}
+          restore-keys: ${{ env.cache-name }}
+
+      - name: Download iOS SDK
+        if: steps.SDK.outputs.cache-hit != 'true'
+        run: |
+          git clone -n --depth=1 --filter=tree:0 https://github.com/theos/sdks/
+          cd sdks
+          git sparse-checkout set --no-cone iPhoneOS${{ inputs.sdk_version }}.sdk
+          git checkout
+          mv ./*.sdk "${THEOS}/sdks"
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Get BHTwitter Version
+        run: |
+          BHTWITTER_VERSION=$(awk '/Version:/ {print $2}' nfb/control)
+          echo "BHTWITTER_VERSION=${BHTWITTER_VERSION}" >> "$GITHUB_ENV"
+          echo "Version: $BHTWITTER_VERSION"
+
+      - name: Build Package (${{ matrix.mode }})
+        run: |
+          cd ${{ github.workspace }}/nfb
+          sed -i '' "s/^TARGET.*$/TARGET := iphone:clang:${{ inputs.sdk_version }}:${{ inputs.target_version }}/" Makefile
+          ./build.sh --${{ matrix.mode }}
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Get package filename
+        id: package_name
+        run: echo "package=$(ls -t nfb/packages/*.deb | head -n1)" >> "$GITHUB_OUTPUT"
+
+      - name: Upload .deb artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: NeoFreeBird-${{ matrix.mode }}_${{ env.BHTWITTER_VERSION }}
+          path: ${{ steps.package_name.outputs.package }}
+          if-no-files-found: error
+
+      - name: Copy .deb to repo debs folder
+        run: cp ${{ steps.package_name.outputs.package }} debs/
+
+      - name: Upload debs folder for commit job
+        uses: actions/upload-artifact@v4
+        with:
+          name: deb-${{ matrix.mode }}
+          path: debs/*.deb
+
+  commit-debs:
+    name: Commit .debs to repo
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download rootless deb
+        uses: actions/download-artifact@v4
+        with:
+          name: deb-rootless
+          path: debs/
+
+      - name: Download rootfull deb
+        uses: actions/download-artifact@v4
+        with:
+          name: deb-rootfull
+          path: debs/
+
+      - name: Commit new .debs
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add debs/*.deb
+          git commit -m "chore: add NeoFreeBird rootless + rootfull debs [ci skip]" || echo "No changes to commit"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
