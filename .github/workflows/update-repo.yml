@@ -45,11 +45,10 @@ jobs:
           Architectures: iphoneos-arm iphoneos-arm64
           Components: main
           Description: Personal repo with tweaks
-
-          $(printf " $(date -Ru)")  # or remove date line if you don't want it
+          Date: $(date -Ru)
           EOF
 
-          # Add SHA256/MD5 of Packages* with proper Debian format: hash size filename
+          # Add MD5/SHA256/SHA512 of Packages* with proper Debian format: hash size filename
           echo "MD5Sum:" >> Release
           for f in Packages Packages.bz2; do
             hash=$(md5sum "$f" | awk '{print $1}')
@@ -60,6 +59,13 @@ jobs:
           echo "SHA256:" >> Release
           for f in Packages Packages.bz2; do
             hash=$(sha256sum "$f" | awk '{print $1}')
+            size=$(wc -c < "$f" | tr -d ' ')
+            echo " ${hash} ${size} ${f}" >> Release
+          done
+
+          echo "SHA512:" >> Release
+          for f in Packages Packages.bz2; do
+            hash=$(sha512sum "$f" | awk '{print $1}')
             size=$(wc -c < "$f" | tr -d ' ')
             echo " ${hash} ${size} ${f}" >> Release
           done
