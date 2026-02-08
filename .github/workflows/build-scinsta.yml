@@ -58,6 +58,14 @@ jobs:
           echo "SCINSTA_VERSION=${SCINSTA_VERSION}" >> "$GITHUB_ENV"
           echo "$SCINSTA_VERSION"
 
+      - name: Fix SDK Version in Makefile
+        run: |
+          cd ${{ github.workspace }}/main
+          # Remove hardcoded SDK version to use latest available
+          sed -i '' '/^TARGET_SDK_VERSION/d' Makefile
+          sed -i '' '/^SDKVERSION/d' Makefile
+          sed -i '' '/^export SDKVERSION/d' Makefile
+
       - name: Build Package (${{ matrix.mode }})
         run: |
           cd ${{ github.workspace }}/main
