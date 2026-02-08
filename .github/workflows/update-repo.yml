@@ -5,6 +5,7 @@ on:
     branches: [ main ]          # or master, whichever your default branch is
     paths:
       - 'debs/**'               # only trigger when .debs change (optional but nice)
+      - '.github/workflows/update-repo.yml'
   workflow_dispatch:            # lets you run it manually from Actions tab too
 
 permissions:
