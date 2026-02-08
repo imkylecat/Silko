@@ -1,4 +1,4 @@
-name: Build BTLoader (Rootless + Rootful + arm64e)
+name: Build BTLoader (Rootless + Rootful)
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
 
     strategy:
       matrix:
-        mode: [rootless, rootfull, arm64e]
+        mode: [rootless, rootfull]
 
     steps:
       - name: Checkout this repo
@@ -64,12 +64,6 @@ jobs:
           if [ "${{ matrix.mode }}" = "rootfull" ]; then
             sed -i '' '/^THEOS_PACKAGE_SCHEME/d' Makefile
             unset THEOS_PACKAGE_SCHEME
-            make package FINALPACKAGE=1
-          elif [ "${{ matrix.mode }}" = "arm64e" ]; then
-            # Patch control and Makefile for native arm64e
-            sed -i '' 's/^Architecture: iphoneos-arm$/Architecture: iphoneos-arm64e/' control
-            sed -i '' 's/^ARCHS = arm64$/ARCHS = arm64e/' Makefile
-            export THEOS_PACKAGE_SCHEME=rootless
             make package FINALPACKAGE=1
           else
             export THEOS_PACKAGE_SCHEME=rootless
@@ -121,18 +115,12 @@ jobs:
           name: btloader-deb-rootfull
           path: debs/
 
-      - name: Download arm64e deb
-        uses: actions/download-artifact@v4
-        with:
-          name: btloader-deb-arm64e
-          path: debs/
-
       - name: Commit new .debs
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add debs/*.deb
-          git commit -m "chore: add BTLoader rootless + rootfull + arm64e debs [ci skip]" || echo "No changes to commit"
+          git commit -m "chore: add BTLoader rootless + rootfull debs [ci skip]" || echo "No changes to commit"
           git pull --rebase
           git push
         env:
