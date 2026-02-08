@@ -1,4 +1,4 @@
-name: Build BTLoader (Rootless + Rootful)
+name: Build BTLoader (arm64)
 
 on:
   workflow_dispatch:
@@ -15,20 +15,10 @@ concurrency:
 
 jobs:
   build:
-    name: Build BTLoader (${{ matrix.mode }})
+    name: Build BTLoader (rootless)
     runs-on: macos-14
     permissions:
       contents: write
-
-    strategy:
-      matrix:
-        include:
-          - mode: rootless
-            scheme: rootless
-            arch: arm64
-          - mode: rootfull
-            scheme: ""
-            arch: arm64
 
     steps:
       - name: Checkout this repo
@@ -58,17 +48,10 @@ jobs:
           echo "BTLOADER_VERSION=${BTLOADER_VERSION}" >> "$GITHUB_ENV"
           echo "$BTLOADER_VERSION"
 
-      - name: Build Package (${{ matrix.mode }})
+      - name: Build Package
         run: |
           cd ${{ github.workspace }}/main
-          # Set architecture and package scheme based on matrix
-          if [ "${{ matrix.scheme }}" = "rootless" ]; then
-            export THEOS_PACKAGE_SCHEME=rootless
-          else
-            unset THEOS_PACKAGE_SCHEME
-            # Remove hardcoded rootless scheme from Makefile for rootful build
-            sed -i '' '/^THEOS_PACKAGE_SCHEME/d' Makefile
-          fi
+          export THEOS_PACKAGE_SCHEME=rootless
           make package FINALPACKAGE=1
 
       - name: Get package filename
@@ -79,14 +62,14 @@ jobs:
       - name: Upload .deb artifact
         uses: actions/upload-artifact@v4
         with:
-          name: BTLoader-${{ matrix.mode }}_${{ env.BTLOADER_VERSION }}
+          name: BTLoader-rootless_${{ env.BTLOADER_VERSION }}
           path: ${{ steps.package_name.outputs.package }}
           if-no-files-found: error
 
       - name: Upload deb for commit job
         uses: actions/upload-artifact@v4
         with:
-          name: deb-btloader-${{ matrix.mode }}
+          name: deb-btloader
           path: ${{ steps.package_name.outputs.package }}
 
   commit-debs:
@@ -102,16 +85,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Download rootless deb
+      - name: Download deb
         uses: actions/download-artifact@v4
         with:
-          name: deb-btloader-rootless
-          path: debs/
-
-      - name: Download rootfull deb
-        uses: actions/download-artifact@v4
-        with:
-          name: deb-btloader-rootfull
+          name: deb-btloader
           path: debs/
 
       - name: Commit new .debs

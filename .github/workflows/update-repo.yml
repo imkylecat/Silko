@@ -24,9 +24,6 @@ jobs:
       - name: Generate Packages file
         run: |
           dpkg-scanpackages --arch iphoneos-arm64 debs > Packages || true
-          #dpkg-scanpackages --arch iphoneos-arm debs > Packages || true
-          #dpkg-scanpackages --arch iphoneos-arm64 debs >> Packages || true
-          # Scan for both arm and arm64 architectures
           # || true prevents failure if no .debs yet
 
       - name: Strip unwanted fields from Packages
@@ -46,7 +43,6 @@ jobs:
           Version: 1.0
           Codename: ios
           Architectures: iphoneos-arm64
-          #Architectures: iphoneos-arm iphoneos-arm64
           Components: main
           Description: Personal repo with tweaks
 
