@@ -23,8 +23,9 @@ jobs:
 
       - name: Generate Packages file
         run: |
-          dpkg-scanpackages > Packages || true
-          # --arch iphoneos-arm is common for tweaks; change/remove if multi-arch
+          dpkg-scanpackages --arch iphoneos-arm debs > Packages || true
+          dpkg-scanpackages --arch iphoneos-arm64 debs >> Packages || true
+          # Scan for both arm and arm64 architectures
           # || true prevents failure if no .debs yet
 
       - name: Compress to Packages.bz2 (Sileo prefers this)
