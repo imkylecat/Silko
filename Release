@@ -1,8 +1,16 @@
-Origin: Silko
-Label: Silko
+Origin: YourName Repo
+Label: YourName Repo
 Suite: stable
 Version: 1.0
 Codename: ios
 Architectures: iphoneos-arm
 Components: main
-Description: Personal repo
+Description: Personal repo with tweaks
+
+ Sun, 08 Feb 2026 02:44:30 +0000  # or remove date line if you don't want it
+MD5Sum:
+ d41d8cd98f00b204e9800998ecf8427e   Packages
+ 4059d198768f9f8dc9372dc1c54bc3c3   Packages.bz2
+SHA256:
+ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855   Packages
+ d3dda84eb03b9738d118eb2be78e246106900493c0ae07819ad60815134a8058   Packages.bz2
