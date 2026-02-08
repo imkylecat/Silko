@@ -23,7 +23,7 @@ jobs:
 
       - name: Generate Packages file
         run: |
-          dpkg-scanpackages --arch iphoneos-arm debs > Packages || true
+          dpkg-scanpackages > Packages || true
           # --arch iphoneos-arm is common for tweaks; change/remove if multi-arch
           # || true prevents failure if no .debs yet
 
