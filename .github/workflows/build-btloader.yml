@@ -1,4 +1,4 @@
-name: Build BTLoader (arm64)
+name: Build BTLoader (Rootless + Rootful)
 
 on:
   workflow_dispatch:
@@ -15,10 +15,14 @@ concurrency:
 
 jobs:
   build:
-    name: Build BTLoader (rootless)
+    name: Build BTLoader (${{ matrix.mode }})
     runs-on: macos-14
     permissions:
       contents: write
+
+    strategy:
+      matrix:
+        mode: [rootless, rootfull]
 
     steps:
       - name: Checkout this repo
@@ -39,13 +43,8 @@ jobs:
         run: |
           echo "$(brew --prefix make)/libexec/gnubin" >> "$GITHUB_PATH"
 
-      - name: Download roothide Theos
-        uses: actions/checkout@v4
-        with:
-          repository: roothide/theos
-          ref: master
-          path: theos
-          submodules: recursive
+      - name: Setup Theos
+        uses: Randomblock1/theos-action@v1
 
       - name: Get BTLoader Version
         run: |
@@ -53,13 +52,18 @@ jobs:
           echo "BTLOADER_VERSION=${BTLOADER_VERSION}" >> "$GITHUB_ENV"
           echo "$BTLOADER_VERSION"
 
-      - name: Build Package
+      - name: Build Package (${{ matrix.mode }})
         run: |
           cd ${{ github.workspace }}/main
-          export THEOS_PACKAGE_SCHEME=roothide
+          if [ "${{ matrix.mode }}" = "rootfull" ]; then
+            sed -i '' '/^THEOS_PACKAGE_SCHEME/d' Makefile
+            unset THEOS_PACKAGE_SCHEME
+          else
+            export THEOS_PACKAGE_SCHEME=rootless
+          fi
           make package FINALPACKAGE=1
         env:
-          THEOS: ${{ github.workspace }}/theos
+          THEOS_PACKAGE_SCHEME: ${{ matrix.mode == 'rootless' && 'rootless' || '' }}
 
       - name: Get package filename
         id: package_name
@@ -69,14 +73,14 @@ jobs:
       - name: Upload .deb artifact
         uses: actions/upload-artifact@v4
         with:
-          name: BTLoader-rootless_${{ env.BTLOADER_VERSION }}
+          name: BTLoader-${{ matrix.mode }}_${{ env.BTLOADER_VERSION }}
           path: ${{ steps.package_name.outputs.package }}
           if-no-files-found: error
 
       - name: Upload deb for commit job
         uses: actions/upload-artifact@v4
         with:
-          name: deb-btloader
+          name: deb-btloader-${{ matrix.mode }}
           path: ${{ steps.package_name.outputs.package }}
 
   commit-debs:
@@ -92,10 +96,16 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Download deb
+      - name: Download rootless deb
         uses: actions/download-artifact@v4
         with:
-          name: deb-btloader
+          name: deb-btloader-rootless
+          path: debs/
+
+      - name: Download rootfull deb
+        uses: actions/download-artifact@v4
+        with:
+          name: deb-btloader-rootfull
           path: debs/
 
       - name: Commit new .debs
