@@ -1,0 +1,125 @@
+name: Build BTLoader (Rootless + Rootful)
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_id:
+        description: "(Optional) BTLoader commit ID to build at"
+        default: ""
+        required: false
+        type: string
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build BTLoader (${{ matrix.mode }})
+    runs-on: macos-14
+    permissions:
+      contents: write
+
+    strategy:
+      matrix:
+        include:
+          - mode: rootless
+            scheme: rootless
+            arch: arm64
+          - mode: rootfull
+            scheme: ""
+            arch: arm64
+
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v4
+
+      - name: Checkout CloudySn0w/BTLoader
+        uses: actions/checkout@v4
+        with:
+          repository: CloudySn0w/BTLoader
+          ref: ${{ github.event.inputs.commit_id || 'main' }}
+          path: main
+          submodules: true
+
+      - name: Install Dependencies
+        run: brew install make dpkg ldid
+
+      - name: Add GNU Make to PATH
+        run: |
+          echo "$(brew --prefix make)/libexec/gnubin" >> "$GITHUB_PATH"
+
+      - name: Setup Theos
+        uses: Randomblock1/theos-action@v1
+
+      - name: Get BTLoader Version
+        run: |
+          BTLOADER_VERSION=$(awk '/Version:/ {print $2}' main/control)
+          echo "BTLOADER_VERSION=${BTLOADER_VERSION}" >> "$GITHUB_ENV"
+          echo "$BTLOADER_VERSION"
+
+      - name: Build Package (${{ matrix.mode }})
+        run: |
+          cd ${{ github.workspace }}/main
+          # Set architecture and package scheme based on matrix
+          if [ "${{ matrix.scheme }}" = "rootless" ]; then
+            export THEOS_PACKAGE_SCHEME=rootless
+          else
+            unset THEOS_PACKAGE_SCHEME
+            # Remove hardcoded rootless scheme from Makefile for rootful build
+            sed -i '' '/^THEOS_PACKAGE_SCHEME/d' Makefile
+          fi
+          make package FINALPACKAGE=1
+
+      - name: Get package filename
+        id: package_name
+        run: |
+          echo "package=$(ls -t main/packages/*.deb | head -n1)" >> "$GITHUB_OUTPUT"
+
+      - name: Upload .deb artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: BTLoader-${{ matrix.mode }}_${{ env.BTLOADER_VERSION }}
+          path: ${{ steps.package_name.outputs.package }}
+          if-no-files-found: error
+
+      - name: Upload deb for commit job
+        uses: actions/upload-artifact@v4
+        with:
+          name: deb-btloader-${{ matrix.mode }}
+          path: ${{ steps.package_name.outputs.package }}
+
+  commit-debs:
+    name: Commit .debs to repo
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download rootless deb
+        uses: actions/download-artifact@v4
+        with:
+          name: deb-btloader-rootless
+          path: debs/
+
+      - name: Download rootfull deb
+        uses: actions/download-artifact@v4
+        with:
+          name: deb-btloader-rootfull
+          path: debs/
+
+      - name: Commit new .debs
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add debs/*.deb
+          git commit -m "chore: add BTLoader rootless + rootfull debs [ci skip]" || echo "No changes to commit"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
