@@ -15,17 +15,17 @@ Author: Amy While <support@anamy.gay>
 Name: Aemulo
 
 Package: com.bandarhl.bhtwitter
-Version: 5.2-1+debug
+Version: 5.2
 Architecture: iphoneos-arm
 Maintainer: NeoFreeBird
-Installed-Size: 24524
+Installed-Size: 19616
 Depends: mobilesubstrate, ws.hbang.common
 Conflicts: com.den.twigalaxy, xyz.cypwn.twigalaxy, xyz.cypwn.bhtwitter, com.netskao.twitternoads, xyz.cypwn.bringbacktwitter
-Filename: debs/com.bandarhl.bhtwitter_5.2-1+debug_iphoneos-arm.deb
-Size: 8862116
-MD5sum: 28891beb51cad156a404d6e1b9a46535
-SHA1: 1f6a855b2974200f63cbfda0b7d3b8acdfd26892
-SHA256: d2106c253e3421adcb2e9581277bc5111ff9c6db7338f302abc326de976afe2b
+Filename: debs/com.bandarhl.bhtwitter_5.2_iphoneos-arm.deb
+Size: 7158714
+MD5sum: 8c6d00b07aaa9ca6482286515af88bb1
+SHA1: ba106bee0c66d94452b0fe3ddb43f41fd8fcda28
+SHA256: 2fbc64c5de8d4784cd4e81d5888c4a2c9dd9b81103e916df0c926924c43ce1fc
 Section: Tweaks
 Description: Awesome tweak for Twitter
 Author: NeoFreeBird
@@ -65,17 +65,17 @@ Author: Amy While <support@anamy.gay>
 Name: Aemulo
 
 Package: com.bandarhl.bhtwitter
-Version: 5.2-1+debug
+Version: 5.2
 Architecture: iphoneos-arm64
 Maintainer: NeoFreeBird
-Installed-Size: 24524
+Installed-Size: 19616
 Depends: mobilesubstrate, ws.hbang.common
 Conflicts: com.den.twigalaxy, xyz.cypwn.twigalaxy, xyz.cypwn.bhtwitter, com.netskao.twitternoads, xyz.cypwn.bringbacktwitter
-Filename: debs/com.bandarhl.bhtwitter_5.2-1+debug_iphoneos-arm64.deb
-Size: 8862312
-MD5sum: f28665b57b57a67c8fa3597e087d117f
-SHA1: 66e9aaa6e6c5aa3f21a55982e3d0e84d125732a1
-SHA256: 1be1249a02f614c3350254931cf4c85efcff7e9602702162088f64f1a855b079
+Filename: debs/com.bandarhl.bhtwitter_5.2_iphoneos-arm64.deb
+Size: 7148876
+MD5sum: 2605e418ed916a388b6e0930b5586059
+SHA1: 48a8e5039f20380505c27597bd83c2a4d4e8006b
+SHA256: b3a9c55bd3ba14a2eb77ee93669e382fbf4701b5dfb67d1dac848c78f5255344
 Section: Tweaks
 Description: Awesome tweak for Twitter
 Author: NeoFreeBird
