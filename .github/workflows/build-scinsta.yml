@@ -69,6 +69,7 @@ jobs:
           cd sdks
           git sparse-checkout set --no-cone iPhoneOS16.2.sdk
           git checkout
+          mkdir -p "${THEOS}/sdks"
           mv iPhoneOS16.2.sdk "${THEOS}/sdks/"
         env:
           THEOS: ${{ github.workspace }}/theos
