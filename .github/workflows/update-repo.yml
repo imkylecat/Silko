@@ -5,7 +5,7 @@ on:
     branches: [ main ]
     paths:
       - 'debs/**'
-      - '.github/workflows/**'
+      - '.github/workflows/update-repo.yml'
   workflow_dispatch:            # lets you run it manually from Actions tab too
   workflow_run:
     workflows: 
