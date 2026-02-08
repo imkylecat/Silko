@@ -77,6 +77,7 @@ jobs:
           
           git add Packages Packages.bz2 Release || true
           git commit -m "chore: update Packages & bz2 [ci skip]" || echo "No changes to commit"
+          git pull --rebase
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # built-in token works here

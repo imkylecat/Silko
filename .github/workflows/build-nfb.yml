@@ -150,6 +150,7 @@ jobs:
           git config user.email "actions@github.com"
           git add debs/*.deb
           git commit -m "chore: add NeoFreeBird rootless + rootfull debs [ci skip]" || echo "No changes to commit"
+          git pull --rebase
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

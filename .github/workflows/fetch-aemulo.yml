@@ -63,6 +63,7 @@ jobs:
           git add -u debs/
           git diff --cached --quiet && echo "No changes — already up to date" && exit 0
           git commit -m "chore: update Aemulo debs to ${AEMULO_VERSION} [ci skip]"
+          git pull --rebase
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
