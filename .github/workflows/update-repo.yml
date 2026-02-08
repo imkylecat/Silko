@@ -28,6 +28,10 @@ jobs:
           # Scan for both arm and arm64 architectures
           # || true prevents failure if no .debs yet
 
+      - name: Strip unwanted fields from Packages
+        run: |
+          sed -i '/^Header:/d; /^Icon:/d; /^SileoDepiction:/d; /^Native-Depiction:/d' Packages
+
       - name: Compress to Packages.bz2 (Sileo prefers this)
         run: bzip2 -k -f Packages   # -k = keep original, -f = force overwrite
 
