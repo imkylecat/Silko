@@ -31,6 +31,23 @@ Description: Awesome tweak for Twitter
 Author: NeoFreeBird
 Name: NFB-BHTwitter
 
+Package: com.cloudysnow.btloader
+Version: 1.0.2
+Architecture: iphoneos-arm
+Maintainer: CloudySn0w
+Installed-Size: 168
+Depends: mobilesubstrate (>= 0.9.5000)
+Conflicts: app.enmity, mod.vendetta, app.unbound
+Filename: debs/com.cloudysnow.btloader_1.0.2_iphoneos-arm.deb
+Size: 28946
+MD5sum: 6fc818dda19ae10298f8f8755803abe3
+SHA1: 3009e01d22cd10019e15fc5f33c83253dd8ed3c5
+SHA256: 3dc626062a5016f471fb0eef987722921c36fa2e17228882e49234419679f9ef
+Section: Tweaks
+Description: A client modification for Discord's mobile app.
+Author: CloudySn0w
+Name: BTLoader
+
 Package: com.amywhile.aemulo
 Version: 2.0-dd2a2db
 Architecture: iphoneos-arm64
@@ -63,4 +80,21 @@ Section: Tweaks
 Description: Awesome tweak for Twitter
 Author: NeoFreeBird
 Name: NFB-BHTwitter
+
+Package: com.cloudysnow.btloader
+Version: 1.0.2
+Architecture: iphoneos-arm64
+Maintainer: CloudySn0w
+Installed-Size: 168
+Depends: mobilesubstrate (>= 0.9.5000)
+Conflicts: app.enmity, mod.vendetta, app.unbound
+Filename: debs/com.cloudysnow.btloader_1.0.2_iphoneos-arm64.deb
+Size: 29032
+MD5sum: be6a5ac6c9c6a4e4e7acecd0495ea279
+SHA1: 3ae57d8d1f3d59fe041c7f5a49a080835f50b5d5
+SHA256: 0b6f7ae53fe2bfc3e1f9e1b5fae5b3243058160f4b81b48023461c45bb2e390d
+Section: Tweaks
+Description: A client modification for Discord's mobile app.
+Author: CloudySn0w
+Name: BTLoader
 

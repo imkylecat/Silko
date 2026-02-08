@@ -7,10 +7,10 @@ Architectures: iphoneos-arm iphoneos-arm64
 Components: main
 Description: Personal repo with tweaks
 
- Sun, 08 Feb 2026 05:03:00 +0000  # or remove date line if you don't want it
+ Sun, 08 Feb 2026 05:07:07 +0000  # or remove date line if you don't want it
 MD5Sum:
- 565073b50fee0aa0adbd0de9cc138b07 2270 Packages
- fdbbdb83eaaf16e0ab5dbd3f83381565 978 Packages.bz2
+ 9f9245a1c7241d714c2298df15d64389 3380 Packages
+ a30089489ca1ec27179aacc238272838 1371 Packages.bz2
 SHA256:
- 19ec15cfa4c796a1940d607d6b54039af74141daebede53ba9fe779cf2e293cc 2270 Packages
- 9cfcf8f6d8fa4bae20b135407788cb168f8f16c011befb7da5d5ccc82f816644 978 Packages.bz2
+ 760dc4c67608b62161817c3aa11e0c03e9af36719a5e39ef0d574c30ec457bbd 3380 Packages
+ 235337f72e8cb3b97ae2cc0a9b0c6c61d1a41e1dda4ea7955899c4419e9ffe05 1371 Packages.bz2
