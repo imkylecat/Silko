@@ -12,10 +12,7 @@ SHA256: c8e65a1e67038667ded0a18d59a8285c7769323f5ea2d2a47f2e8a8b8ff3bd3d
 Section: Tweaks
 Description: NFC Frickery
 Author: Amy While <support@anamy.gay>
-Header: https://elihwyma.github.io/Aemulo/assets/Depiction-Header.png
-Icon: https://elihwyma.github.io/Aemulo/assets/Icon.png
 Name: Aemulo
-Native-Depiction: https://elihwyma.github.io/Aemulo/NativeDepiction.json
 
 Package: com.bandarhl.bhtwitter
 Version: 5.2-1+debug
@@ -34,24 +31,6 @@ Description: Awesome tweak for Twitter
 Author: NeoFreeBird
 Name: NFB-BHTwitter
 
-Package: cocobo1.kettu.tweak
-Version: 1.0.0
-Architecture: iphoneos-arm64
-Maintainer: cocobo1
-Installed-Size: 152
-Depends: mobilesubstrate (>= 0.9.5000)
-Conflicts: app.enmity, mod.vendetta, app.unbound, com.cloudysnow.btloader
-Filename: debs/cocobo1.kettu.tweak_1.0.0_iphoneos-arm64.deb
-Size: 28946
-MD5sum: 2592652a2f173058807055c683dc6849
-SHA1: ead041f58f8a9d8c61d745e5c237b1efa5a38799
-SHA256: f2c04929fe8bbed206b62a050621eba4040ffef3184f556cc5e845bd275e30c8
-Section: Tweaks
-Description: A tweak to inject Kettu into Discord
-Author: cocobo1
-Icon: https://codeberg.org/cocobo1/Kettu/raw/branch/main/src/assets/icons/kettu.png
-Name: KettuTweak
-
 Package: com.amywhile.aemulo
 Version: 2.0-dd2a2db
 Architecture: iphoneos-arm64
@@ -66,10 +45,7 @@ SHA256: 38d5b32cee94725b3e1ec6889ee8c2b4a95b049e31694c99f2aa9080737fce88
 Section: Tweaks
 Description: NFC Frickery
 Author: Amy While <support@anamy.gay>
-Header: https://elihwyma.github.io/Aemulo/assets/Depiction-Header.png
-Icon: https://elihwyma.github.io/Aemulo/assets/Icon.png
 Name: Aemulo
-Native-Depiction: https://elihwyma.github.io/Aemulo/NativeDepiction.json
 
 Package: com.bandarhl.bhtwitter
 Version: 5.2-1+debug
@@ -87,22 +63,4 @@ Section: Tweaks
 Description: Awesome tweak for Twitter
 Author: NeoFreeBird
 Name: NFB-BHTwitter
-
-Package: com.cloudysnow.btloader
-Version: 1.0.2
-Architecture: iphoneos-arm64
-Maintainer: CloudySn0w
-Installed-Size: 152
-Depends: mobilesubstrate (>= 0.9.5000)
-Conflicts: app.enmity, mod.vendetta, app.unbound
-Filename: debs/com.cloudysnow.btloader_1.0.2_iphoneos-arm64.deb
-Size: 29172
-MD5sum: e683fb497321316ec91c837748f0ed17
-SHA1: 7eb9e77340ef2d52d73629c9e88bb595ed0db2d9
-SHA256: b4bf03537bed2c67d629730afea57c96ff22737259d59d0fd24c16c55048ce10
-Section: Tweaks
-Description: A client modification for Discord's mobile app.
-Author: CloudySn0w
-Icon: https://avatars.githubusercontent.com/u/186649748
-Name: BTLoader
 
