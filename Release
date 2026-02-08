@@ -6,7 +6,7 @@ Codename: ios
 Architectures: iphoneos-arm iphoneos-arm64 iphoneos-arm64e
 Components: main
 Description: Personal repo with tweaks
-Date: Sun, 08 Feb 2026 06:36:08 +0000
+Date: Sun, 08 Feb 2026 06:43:22 +0000
 MD5Sum:
  a0b12a7534e6c8c02a21bb2714591839 3945 Packages
  7c44d903ec2ee9dbb55728f6b7168987 1524 Packages.bz2
