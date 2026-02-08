@@ -4,14 +4,13 @@ Suite: stable
 Version: 1.0
 Codename: ios
 Architectures: iphoneos-arm64
-#Architectures: iphoneos-arm iphoneos-arm64
 Components: main
 Description: Personal repo with tweaks
 
- Sun, 08 Feb 2026 05:14:13 +0000  # or remove date line if you don't want it
+ Sun, 08 Feb 2026 05:15:50 +0000  # or remove date line if you don't want it
 MD5Sum:
- c8a95b7e5022c91b77a7bda9568b17f4 8468 Packages
- e32c111692881585217284ab6dc76a94 1731 Packages.bz2
+ ad902e2ac0e0ff2ce4c677e672a451a2 1696 Packages
+ ee4802249134e483beba851df929ad0b 960 Packages.bz2
 SHA256:
- 116d5d86bb753da3b343fe8444ae2c3ded57ee62d42d367cc5e27060e4103872 8468 Packages
- 8433d5ad87d330e392028b0d0f19173582095414a993032a6983c0e7a15a3d3a 1731 Packages.bz2
+ 0453a9893f71554cca2bb22664c27736104b54ef6bf788354cfff9ed5354f74a 1696 Packages
+ 6eab3863762af88e81b8bc069d245bb8c482091a700de0a86c2334ddffbb247d 960 Packages.bz2
