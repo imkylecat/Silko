@@ -28,7 +28,7 @@ jobs:
 
     strategy:
       matrix:
-        mode: [rootless, rootfull]
+        mode: [rootless, rootfull, arm64e]
 
     steps:
       - name: Checkout this repo
@@ -64,12 +64,29 @@ jobs:
           if [ "${{ matrix.mode }}" = "rootfull" ]; then
             sed -i '' '/^THEOS_PACKAGE_SCHEME/d' Makefile
             unset THEOS_PACKAGE_SCHEME
+            make package FINALPACKAGE=1
+          elif [ "${{ matrix.mode }}" = "arm64e" ]; then
+            export THEOS_PACKAGE_SCHEME=rootless
+            make package FINALPACKAGE=1 ARCHS="arm64e"
           else
             export THEOS_PACKAGE_SCHEME=rootless
+            make package FINALPACKAGE=1
           fi
-          make package FINALPACKAGE=1 ARCHS="arm64 arm64e"
         env:
-          THEOS_PACKAGE_SCHEME: ${{ matrix.mode == 'rootless' && 'rootless' || '' }}
+          THEOS_PACKAGE_SCHEME: ${{ matrix.mode == 'rootfull' && '' || 'rootless' }}
+
+      - name: Patch arm64e deb architecture
+        if: matrix.mode == 'arm64e'
+        run: |
+          DEB=$(ls -t main/packages/*.deb | head -n1)
+          TMPDIR=$(mktemp -d)
+          dpkg-deb -R "$DEB" "$TMPDIR"
+          sed -i '' 's/^Architecture: iphoneos-arm64$/Architecture: iphoneos-arm64e/' "$TMPDIR/DEBIAN/control"
+          dpkg-deb -b "$TMPDIR" "$DEB"
+          rm -rf "$TMPDIR"
+          # Rename deb to reflect arm64e
+          NEWNAME=$(echo "$DEB" | sed 's/iphoneos-arm64/iphoneos-arm64e/')
+          mv "$DEB" "$NEWNAME"
 
       - name: Get package filename
         id: package_name
@@ -114,12 +131,18 @@ jobs:
           name: deb-btloader-rootfull
           path: debs/
 
+      - name: Download arm64e deb
+        uses: actions/download-artifact@v4
+        with:
+          name: deb-btloader-arm64e
+          path: debs/
+
       - name: Commit new .debs
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add debs/*.deb
-          git commit -m "chore: add BTLoader rootless + rootfull debs [ci skip]" || echo "No changes to commit"
+          git commit -m "chore: add BTLoader rootless + rootfull + arm64e debs [ci skip]" || echo "No changes to commit"
           git pull --rebase
           git push
         env:

@@ -25,6 +25,7 @@ jobs:
         run: |
           dpkg-scanpackages --arch iphoneos-arm debs > Packages || true
           dpkg-scanpackages --arch iphoneos-arm64 debs >> Packages || true
+          dpkg-scanpackages --arch iphoneos-arm64e debs >> Packages || true
 
       - name: Strip unwanted fields from Packages
         run: |
@@ -42,7 +43,7 @@ jobs:
           Suite: stable
           Version: 1.0
           Codename: ios
-          Architectures: iphoneos-arm iphoneos-arm64
+          Architectures: iphoneos-arm iphoneos-arm64 iphoneos-arm64e
           Components: main
           Description: Personal repo with tweaks
           Date: $(date -Ru)
