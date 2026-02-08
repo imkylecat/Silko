@@ -53,10 +53,10 @@ jobs:
         run: |
           echo "$(brew --prefix make)/libexec/gnubin" >> "$GITHUB_PATH"
 
-      - name: Download Theos
+      - name: Download roothide Theos
         uses: actions/checkout@v4
         with:
-          repository: theos/theos
+          repository: roothide/theos
           ref: master
           path: theos
           submodules: recursive
@@ -92,7 +92,13 @@ jobs:
         run: |
           cd ${{ github.workspace }}/main
           sed -i '' "s/^TARGET.*$/TARGET := iphone:clang:${{ inputs.sdk_version }}:${{ inputs.target_version }}/" Makefile
-          ./build.sh --${{ matrix.mode }}
+          # Use roothide scheme for rootless builds on Bootstrap jailbreak
+          if [ "${{ matrix.mode }}" = "rootless" ]; then
+            export THEOS_PACKAGE_SCHEME=roothide
+            make package
+          else
+            ./build.sh --${{ matrix.mode }}
+          fi
         env:
           THEOS: ${{ github.workspace }}/theos
 

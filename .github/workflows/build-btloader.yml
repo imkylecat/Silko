@@ -39,8 +39,13 @@ jobs:
         run: |
           echo "$(brew --prefix make)/libexec/gnubin" >> "$GITHUB_PATH"
 
-      - name: Setup Theos
-        uses: Randomblock1/theos-action@v1
+      - name: Download roothide Theos
+        uses: actions/checkout@v4
+        with:
+          repository: roothide/theos
+          ref: master
+          path: theos
+          submodules: recursive
 
       - name: Get BTLoader Version
         run: |
@@ -51,8 +56,10 @@ jobs:
       - name: Build Package
         run: |
           cd ${{ github.workspace }}/main
-          export THEOS_PACKAGE_SCHEME=rootless
+          export THEOS_PACKAGE_SCHEME=roothide
           make package FINALPACKAGE=1
+        env:
+          THEOS: ${{ github.workspace }}/theos
 
       - name: Get package filename
         id: package_name
