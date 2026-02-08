@@ -23,8 +23,9 @@ jobs:
 
       - name: Generate Packages file
         run: |
+          dpkg-scanpackages --arch iphoneos-arm64 debs > Packages || true
           #dpkg-scanpackages --arch iphoneos-arm debs > Packages || true
-          dpkg-scanpackages --arch iphoneos-arm64 debs >> Packages || true
+          #dpkg-scanpackages --arch iphoneos-arm64 debs >> Packages || true
           # Scan for both arm and arm64 architectures
           # || true prevents failure if no .debs yet
 
