@@ -67,7 +67,7 @@ jobs:
           else
             export THEOS_PACKAGE_SCHEME=rootless
           fi
-          make package FINALPACKAGE=1
+          make package FINALPACKAGE=1 ARCHS="arm64 arm64e"
         env:
           THEOS_PACKAGE_SCHEME: ${{ matrix.mode == 'rootless' && 'rootless' || '' }}
 
