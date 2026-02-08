@@ -14,6 +14,40 @@ Description: NFC Frickery
 Author: Amy While <support@anamy.gay>
 Name: Aemulo
 
+Package: com.bandarhl.bhtwitter
+Version: 5.2-1+debug
+Architecture: iphoneos-arm
+Maintainer: NeoFreeBird
+Installed-Size: 24524
+Depends: mobilesubstrate, ws.hbang.common
+Conflicts: com.den.twigalaxy, xyz.cypwn.twigalaxy, xyz.cypwn.bhtwitter, com.netskao.twitternoads, xyz.cypwn.bringbacktwitter
+Filename: debs/com.bandarhl.bhtwitter_5.2-1+debug_iphoneos-arm.deb
+Size: 8862116
+MD5sum: 28891beb51cad156a404d6e1b9a46535
+SHA1: 1f6a855b2974200f63cbfda0b7d3b8acdfd26892
+SHA256: d2106c253e3421adcb2e9581277bc5111ff9c6db7338f302abc326de976afe2b
+Section: Tweaks
+Description: Awesome tweak for Twitter
+Author: NeoFreeBird
+Name: NFB-BHTwitter
+
+Package: com.cloudysnow.btloader
+Version: 1.0.2
+Architecture: iphoneos-arm
+Maintainer: CloudySn0w
+Installed-Size: 168
+Depends: mobilesubstrate (>= 0.9.5000)
+Conflicts: app.enmity, mod.vendetta, app.unbound
+Filename: debs/com.cloudysnow.btloader_1.0.2_iphoneos-arm.deb
+Size: 29010
+MD5sum: 4ffb9a02ef6f0a92ebc5164b7ec39d8f
+SHA1: 08a88bc87672b5a1c8989447791bc2844aac3e73
+SHA256: 6d6f21471768adef24cdc08eb089e78c0e6e12846f27fcff3a958e2bcdf4e174
+Section: Tweaks
+Description: A client modification for Discord's mobile app.
+Author: CloudySn0w
+Name: BTLoader
+
 Package: com.amywhile.aemulo
 Version: 2.0-dd2a2db
 Architecture: iphoneos-arm64
@@ -55,10 +89,10 @@ Installed-Size: 168
 Depends: mobilesubstrate (>= 0.9.5000)
 Conflicts: app.enmity, mod.vendetta, app.unbound
 Filename: debs/com.cloudysnow.btloader_1.0.2_iphoneos-arm64.deb
-Size: 29018
-MD5sum: 474108e609e04c85dcfe6b0bc7ea8b64
-SHA1: 782a6cc3c58c0fa0cd8b3e4adeda121c035d567f
-SHA256: 804b8b801c379ede332f8c71e269657a1051a09875332570fdbb9b1654653631
+Size: 29012
+MD5sum: bb0c7edffd22513143980bc13c169c1a
+SHA1: 79dca2855315e70aaf3ba2ed39efc5546faf5371
+SHA256: 43338a656c30cccb64a38859a04f1ab90534e847a7b69709a1fba29cf73a869b
 Section: Tweaks
 Description: A client modification for Discord's mobile app.
 Author: CloudySn0w
