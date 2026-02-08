@@ -35,14 +35,14 @@ Package: com.cloudysnow.btloader
 Version: 1.0.2
 Architecture: iphoneos-arm
 Maintainer: CloudySn0w
-Installed-Size: 168
+Installed-Size: 344
 Depends: mobilesubstrate (>= 0.9.5000)
 Conflicts: app.enmity, mod.vendetta, app.unbound
 Filename: debs/com.cloudysnow.btloader_1.0.2_iphoneos-arm.deb
-Size: 29010
-MD5sum: 4ffb9a02ef6f0a92ebc5164b7ec39d8f
-SHA1: 08a88bc87672b5a1c8989447791bc2844aac3e73
-SHA256: 6d6f21471768adef24cdc08eb089e78c0e6e12846f27fcff3a958e2bcdf4e174
+Size: 41432
+MD5sum: 3bac7af63b8a2f4581179dc86cb3b20a
+SHA1: 68e9e15c4c5ead900c6bc74830bc9ee0c46021a6
+SHA256: 98dfbef8ce20a508742dbd5fe98066976446c10a74bd0d06f2c4a49eb75ac87f
 Section: Tweaks
 Description: A client modification for Discord's mobile app.
 Author: CloudySn0w
@@ -85,14 +85,14 @@ Package: com.cloudysnow.btloader
 Version: 1.0.2
 Architecture: iphoneos-arm64
 Maintainer: CloudySn0w
-Installed-Size: 168
+Installed-Size: 344
 Depends: mobilesubstrate (>= 0.9.5000)
 Conflicts: app.enmity, mod.vendetta, app.unbound
 Filename: debs/com.cloudysnow.btloader_1.0.2_iphoneos-arm64.deb
-Size: 29012
-MD5sum: bb0c7edffd22513143980bc13c169c1a
-SHA1: 79dca2855315e70aaf3ba2ed39efc5546faf5371
-SHA256: 43338a656c30cccb64a38859a04f1ab90534e847a7b69709a1fba29cf73a869b
+Size: 41770
+MD5sum: 9c10709f336384afe319f90449650564
+SHA1: ea309a98c8b262dd9c3b762fca298baf0e06da40
+SHA256: 3ee34c9494aede3718f5df3fe6f0fc6e5a63faef7dfad1d26060248de9f32261
 Section: Tweaks
 Description: A client modification for Discord's mobile app.
 Author: CloudySn0w
