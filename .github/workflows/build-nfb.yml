@@ -145,7 +145,7 @@ jobs:
       - name: Upload debs folder for commit job
         uses: actions/upload-artifact@v4
         with:
-          name: deb-${{ matrix.mode }}
+          name: nfb-deb-${{ matrix.mode }}
           path: debs/*.deb
 
   commit-debs:
@@ -164,19 +164,19 @@ jobs:
       - name: Download rootless deb
         uses: actions/download-artifact@v4
         with:
-          name: deb-rootless
+          name: nfb-deb-rootless
           path: debs/
 
       - name: Download rootfull deb
         uses: actions/download-artifact@v4
         with:
-          name: deb-rootfull
+          name: nfb-deb-rootfull
           path: debs/
 
       - name: Download arm64e deb
         uses: actions/download-artifact@v4
         with:
-          name: deb-arm64e
+          name: nfb-deb-arm64e
           path: debs/
 
       - name: Commit new .debs

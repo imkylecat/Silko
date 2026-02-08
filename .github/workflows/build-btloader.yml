@@ -103,7 +103,7 @@ jobs:
       - name: Upload deb for commit job
         uses: actions/upload-artifact@v4
         with:
-          name: deb-btloader-${{ matrix.mode }}
+          name: btloader-deb-${{ matrix.mode }}
           path: ${{ steps.package_name.outputs.package }}
 
   commit-debs:
@@ -122,19 +122,19 @@ jobs:
       - name: Download rootless deb
         uses: actions/download-artifact@v4
         with:
-          name: deb-btloader-rootless
+          name: btloader-deb-rootless
           path: debs/
 
       - name: Download rootfull deb
         uses: actions/download-artifact@v4
         with:
-          name: deb-btloader-rootfull
+          name: btloader-deb-rootfull
           path: debs/
 
       - name: Download arm64e deb
         uses: actions/download-artifact@v4
         with:
-          name: deb-btloader-arm64e
+          name: btloader-deb-arm64e
           path: debs/
 
       - name: Commit new .debs
