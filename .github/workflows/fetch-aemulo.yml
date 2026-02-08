@@ -1,6 +1,10 @@
 name: Fetch Aemulo Debs
 
 on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/fetch-aemulo.yml'
   workflow_dispatch:
   schedule:
     - cron: "0 12 * * 0" # weekly check every Sunday at noon UTC
