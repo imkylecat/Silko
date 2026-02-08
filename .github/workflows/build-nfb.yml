@@ -42,7 +42,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: NeoFreeBird/tweak
-          ref: ${{ inputs.commit_id || 'main' }}
+          ref: ${{ inputs.commit_id || 'master' }}
           path: nfb
           submodules: recursive
 
