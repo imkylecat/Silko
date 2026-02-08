@@ -58,6 +58,17 @@ jobs:
           echo "Downloaded debs:"
           ls -la debs/com.amywhile.aemulo_*.deb
 
+      - name: Fix Section in deb control files
+        run: |
+          for deb in debs/com.amywhile.aemulo_*.deb; do
+            echo "Patching ${deb}..."
+            TMPDIR=$(mktemp -d)
+            dpkg-deb -R "$deb" "$TMPDIR"
+            sed -i 's/^Section: Tweaks$/Section: Utilities/' "$TMPDIR/DEBIAN/control"
+            dpkg-deb -b "$TMPDIR" "$deb"
+            rm -rf "$TMPDIR"
+          done
+
       - name: Commit new debs
         run: |
           git config user.name "GitHub Actions"
