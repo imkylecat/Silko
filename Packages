@@ -5,11 +5,11 @@ Maintainer: Amy While <support@anamy.gay>
 Installed-Size: 1968
 Depends: firmware (>= 14.0)
 Filename: debs/com.amywhile.aemulo_2.0-dd2a2db_iphoneos-arm.deb
-Size: 539316
-MD5sum: 836ddc8e1a3cfa1414b3445b0d0399bc
-SHA1: 045bef12a73ad085fe94c607f515ceae971e3a75
-SHA256: c8e65a1e67038667ded0a18d59a8285c7769323f5ea2d2a47f2e8a8b8ff3bd3d
-Section: Tweaks
+Size: 611574
+MD5sum: 3a72a091a30118306024edc9c27c9678
+SHA1: 043ab41400b3b31bb514d0f5e696db42e8a9b738
+SHA256: ab2aae6a539e34c0955b744c8bb57f6cdddfc533a4334c1b3699b460ac432066
+Section: Utilities
 Description: NFC Frickery
 Author: Amy While <support@anamy.gay>
 Name: Aemulo
@@ -55,11 +55,11 @@ Maintainer: Amy While <support@anamy.gay>
 Installed-Size: 1968
 Depends: firmware (>= 14.0)
 Filename: debs/com.amywhile.aemulo_2.0-dd2a2db_iphoneos-arm64.deb
-Size: 538088
-MD5sum: 4590fc7d02e36dc256d926ad05f67896
-SHA1: 124ad8ffd0ed399856fe6375ea3bb3718e80cc6f
-SHA256: 38d5b32cee94725b3e1ec6889ee8c2b4a95b049e31694c99f2aa9080737fce88
-Section: Tweaks
+Size: 612052
+MD5sum: 45059cbf3eb2dd7a2db393fb3ae71dce
+SHA1: 75981df535ab93f57de053acc181c3aec70fca9c
+SHA256: 6d4d7a52a0328b7801a7a1accc49f085de4ef16536a6900a780dc1f08b09b329
+Section: Utilities
 Description: NFC Frickery
 Author: Amy While <support@anamy.gay>
 Name: Aemulo
