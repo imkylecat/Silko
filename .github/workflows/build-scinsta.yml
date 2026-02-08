@@ -52,19 +52,32 @@ jobs:
       - name: Setup Theos
         uses: Randomblock1/theos-action@v1
 
+      - name: iOS SDK Caching
+        id: SDK
+        uses: actions/cache@v4
+        env:
+          cache-name: iOS-16.2-SDK
+        with:
+          path: theos/sdks/
+          key: ${{ env.cache-name }}
+          restore-keys: ${{ env.cache-name }}
+
+      - name: Download iOS SDK
+        if: steps.SDK.outputs.cache-hit != 'true'
+        run: |
+          git clone -n --depth=1 --filter=tree:0 https://github.com/theos/sdks/
+          cd sdks
+          git sparse-checkout set --no-cone iPhoneOS16.2.sdk
+          git checkout
+          mv ./*.sdk "${THEOS}/sdks"
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
       - name: Get SCInsta Version
         run: |
           SCINSTA_VERSION=$(awk '/Version:/ {print $2}' main/control)
           echo "SCINSTA_VERSION=${SCINSTA_VERSION}" >> "$GITHUB_ENV"
           echo "$SCINSTA_VERSION"
-
-      - name: Fix SDK Version in Makefile
-        run: |
-          cd ${{ github.workspace }}/main
-          # Remove hardcoded SDK version to use latest available
-          sed -i '' '/^TARGET_SDK_VERSION/d' Makefile
-          sed -i '' '/^SDKVERSION/d' Makefile
-          sed -i '' '/^export SDKVERSION/d' Makefile
 
       - name: Build Package (${{ matrix.mode }})
         run: |
