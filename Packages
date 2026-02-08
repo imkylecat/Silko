@@ -6,9 +6,9 @@ Installed-Size: 1968
 Depends: firmware (>= 14.0)
 Filename: debs/com.amywhile.aemulo_2.0-dd2a2db_iphoneos-arm.deb
 Size: 611632
-MD5sum: ce2099aecef9ffaac4471a43989b29d1
-SHA1: e5ecfbb99f231888fc25e8b9dd4301da43792141
-SHA256: 884fa149455b485900aee68051fbea3d3d99be8aa0c01f62b3ea11668ae12ff2
+MD5sum: 75e339d8b7b928196228b7c69dd46431
+SHA1: cbfea93d1fdc99be8863262d0b09c8d54813f523
+SHA256: 518dfca776ea80bfb2287d0231049b0e772af136dc2fda437289d03ca4378461
 Section: Utilities
 Description: NFC Frickery
 Author: Amy While <support@anamy.gay>
@@ -39,10 +39,10 @@ Installed-Size: 168
 Depends: mobilesubstrate (>= 0.9.5000)
 Conflicts: app.enmity, mod.vendetta, app.unbound
 Filename: debs/com.cloudysnow.btloader_1.0.2_iphoneos-arm.deb
-Size: 29008
-MD5sum: 47f163b399f999631d9f7e23b7609567
-SHA1: 312064f95127d2f2f32c2668ddb9b6afc7de1a21
-SHA256: e4a2000a65fe9e528746c699f3324f80ac4c5c47e682f6f87b150d7adf51ec37
+Size: 28968
+MD5sum: 2e318922b7fc75fe6b54d6ea6bc31bde
+SHA1: 0a22f5df8f0a570c094fb2af2814cbee17febc73
+SHA256: 0c5eb243a2f3b135d6bf0751fc9be86519d6c3a28db9ed32b8e5b2091118fbfe
 Section: Tweaks
 Description: A client modification for Discord's mobile app.
 Author: CloudySn0w
@@ -55,10 +55,10 @@ Maintainer: Amy While <support@anamy.gay>
 Installed-Size: 1968
 Depends: firmware (>= 14.0)
 Filename: debs/com.amywhile.aemulo_2.0-dd2a2db_iphoneos-arm64.deb
-Size: 612040
-MD5sum: 9710660a8e1ca90b8b8f23299cebebd2
-SHA1: f9b8fbdb5eaab0e571a5eeba9bb0d7f3e4c40343
-SHA256: 37e4b77393fde67ce7bbe6ed269599f3f76045f8d83ca69c77b674f6e0349843
+Size: 612048
+MD5sum: 545ab63e0a061f4641832910759c8730
+SHA1: 555da0652e6ee972fe686e1c10f8131bfe6f4ed3
+SHA256: ebf99cc4d702ff733f7901005b50caa42d0caa468aad037744fe4ae499d41dbc
 Section: Utilities
 Description: NFC Frickery
 Author: Amy While <support@anamy.gay>
@@ -89,10 +89,10 @@ Installed-Size: 168
 Depends: mobilesubstrate (>= 0.9.5000)
 Conflicts: app.enmity, mod.vendetta, app.unbound
 Filename: debs/com.cloudysnow.btloader_1.0.2_iphoneos-arm64.deb
-Size: 29010
-MD5sum: 5f717a1e8529d1268988197149438a20
-SHA1: 2c28d483283c30903dcaa6b25abf7b4a12af8fbe
-SHA256: 22021794dd5b948200da117aba3476c02ecd730c5aee56053988a8cac6cbb5a5
+Size: 29038
+MD5sum: a6bb29da48b19e140eed3fb880cba010
+SHA1: 02963da0cdb715a0a23177590048bf40463b2f36
+SHA256: 924967bc02157d6d3a22fb079263176d867a88ee5a5d4e9b3bee7618f48226fe
 Section: Tweaks
 Description: A client modification for Discord's mobile app.
 Author: CloudySn0w
