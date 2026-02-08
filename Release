@@ -3,10 +3,10 @@ Label: Silko
 Suite: stable
 Version: 1.0
 Codename: ios
-Architectures: iphoneos-arm iphoneos-arm64
+Architectures: iphoneos-arm iphoneos-arm64 iphoneos-arm64e
 Components: main
 Description: Personal repo with tweaks
-Date: Sun, 08 Feb 2026 06:00:53 +0000
+Date: Sun, 08 Feb 2026 06:03:05 +0000
 MD5Sum:
  f99376f5a14ede83854858b5a7e2a01c 3386 Packages
  ed36b90e090dc0f7de8eec1058f20d96 1388 Packages.bz2
