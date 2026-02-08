@@ -49,8 +49,13 @@ jobs:
         run: |
           echo "$(brew --prefix make)/libexec/gnubin" >> "$GITHUB_PATH"
 
-      - name: Setup Theos
-        uses: Randomblock1/theos-action@v1
+      - name: Download Theos
+        uses: actions/checkout@v4
+        with:
+          repository: theos/theos
+          ref: master
+          path: theos
+          submodules: recursive
 
       - name: iOS SDK Caching
         id: SDK
@@ -58,7 +63,7 @@ jobs:
         env:
           cache-name: iOS-16.5-SDK
         with:
-          path: theos/sdks/
+          path: ${{ github.workspace }}/theos/sdks/
           key: ${{ env.cache-name }}
           restore-keys: ${{ env.cache-name }}
 
@@ -69,8 +74,7 @@ jobs:
           cd sdks
           git sparse-checkout set --no-cone iPhoneOS16.5.sdk
           git checkout
-          mkdir -p "${THEOS}/sdks"
-          mv iPhoneOS16.5.sdk "${THEOS}/sdks/"
+          mv iPhoneOS16.5.sdk "$THEOS/sdks/"
         env:
           THEOS: ${{ github.workspace }}/theos
 
@@ -79,6 +83,11 @@ jobs:
           SCINSTA_VERSION=$(awk '/Version:/ {print $2}' main/control)
           echo "SCINSTA_VERSION=${SCINSTA_VERSION}" >> "$GITHUB_ENV"
           echo "$SCINSTA_VERSION"
+
+      - name: Update SDK version in Makefile
+        run: |
+          cd ${{ github.workspace }}/main
+          sed -i '' 's/16\.2/16.5/g' Makefile
 
       - name: Build Package (${{ matrix.mode }})
         run: |
@@ -92,6 +101,7 @@ jobs:
             make package FINALPACKAGE=1
           fi
         env:
+          THEOS: ${{ github.workspace }}/theos
           THEOS_PACKAGE_SCHEME: ${{ matrix.mode == 'rootfull' && '' || 'rootless' }}
 
       - name: Get package filename
