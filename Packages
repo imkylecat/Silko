@@ -1,3 +1,24 @@
+Package: com.amywhile.aemulo
+SileoDepiction: https://imkylecat.github.io/Silko/depictions/com.amywhile.aemulo/info.json
+SileoDepiction: https://imkylecat.github.io/Silko/depictions/com.amywhile.aemulo/info.json
+Version: 2.0-dd2a2db
+Architecture: iphoneos-arm
+Maintainer: Amy While <support@anamy.gay>
+Installed-Size: 1968
+Depends: firmware (>= 14.0)
+Filename: debs/com.amywhile.aemulo_2.0-dd2a2db_iphoneos-arm.deb
+Size: 539316
+MD5sum: 836ddc8e1a3cfa1414b3445b0d0399bc
+SHA1: 045bef12a73ad085fe94c607f515ceae971e3a75
+SHA256: c8e65a1e67038667ded0a18d59a8285c7769323f5ea2d2a47f2e8a8b8ff3bd3d
+Section: Tweaks
+Description: NFC Frickery
+Author: Amy While <support@anamy.gay>
+Header: https://elihwyma.github.io/Aemulo/assets/Depiction-Header.png
+Icon: https://elihwyma.github.io/Aemulo/assets/Icon.png
+Name: Aemulo
+Native-Depiction: https://elihwyma.github.io/Aemulo/NativeDepiction.json
+
 Package: com.bandarhl.bhtwitter
 Version: 5.2-1+debug
 Architecture: iphoneos-arm
@@ -32,6 +53,26 @@ Description: A tweak to inject Kettu into Discord
 Author: cocobo1
 Icon: https://codeberg.org/cocobo1/Kettu/raw/branch/main/src/assets/icons/kettu.png
 Name: KettuTweak
+
+Package: com.amywhile.aemulo
+SileoDepiction: https://imkylecat.github.io/Silko/depictions/com.amywhile.aemulo/info.json
+Version: 2.0-dd2a2db
+Architecture: iphoneos-arm64
+Maintainer: Amy While <support@anamy.gay>
+Installed-Size: 1968
+Depends: firmware (>= 14.0)
+Filename: debs/com.amywhile.aemulo_2.0-dd2a2db_iphoneos-arm64.deb
+Size: 538088
+MD5sum: 4590fc7d02e36dc256d926ad05f67896
+SHA1: 124ad8ffd0ed399856fe6375ea3bb3718e80cc6f
+SHA256: 38d5b32cee94725b3e1ec6889ee8c2b4a95b049e31694c99f2aa9080737fce88
+Section: Tweaks
+Description: NFC Frickery
+Author: Amy While <support@anamy.gay>
+Header: https://elihwyma.github.io/Aemulo/assets/Depiction-Header.png
+Icon: https://elihwyma.github.io/Aemulo/assets/Icon.png
+Name: Aemulo
+Native-Depiction: https://elihwyma.github.io/Aemulo/NativeDepiction.json
 
 Package: com.bandarhl.bhtwitter
 Version: 5.2-1+debug
