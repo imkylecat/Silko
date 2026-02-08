@@ -7,6 +7,16 @@ on:
       - 'debs/**'
       - '.github/workflows/**'
   workflow_dispatch:            # lets you run it manually from Actions tab too
+  workflow_run:
+    workflows: 
+      - "Fetch Aemulo Debs"
+      - "Build BTLoader (Rootless + Rootful)"
+      - "Build BHTwitter (Rootless + Rootful)"
+      - "Build SCInsta (Rootless + Rootful)"
+    types:
+      - completed
+    branches:
+      - main
 
 permissions:
   contents: write               # needed to commit the updated Packages/Release back
