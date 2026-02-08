@@ -38,7 +38,7 @@ jobs:
 
     strategy:
       matrix:
-        mode: [rootless, rootfull]
+        mode: [rootless, rootfull, arm64e]
 
     steps:
       - name: Checkout this repo
@@ -98,9 +98,14 @@ jobs:
         run: |
           cd ${{ github.workspace }}/main
           sed -i '' "s/^TARGET.*$/TARGET := iphone:clang:${{ inputs.sdk_version }}:${{ inputs.target_version }}/" Makefile
-          ./build.sh --${{ matrix.mode }}
+          if [ "${{ matrix.mode }}" = "arm64e" ]; then
+            ./build.sh --rootless
+          else
+            ./build.sh --${{ matrix.mode }}
+          fi
         env:
           THEOS: ${{ github.workspace }}/theos
+          ARCHS: ${{ matrix.mode == 'arm64e' && 'arm64e' || 'arm64' }}
 
       - name: Get package filename
         id: package_name
@@ -114,8 +119,28 @@ jobs:
           path: ${{ github.workspace }}/main/packages/${{ steps.package_name.outputs.package }}
           if-no-files-found: error
 
+      - name: Patch arm64e deb architecture
+        if: matrix.mode == 'arm64e'
+        run: |
+          DEB="${{ github.workspace }}/main/packages/${{ steps.package_name.outputs.package }}"
+          TMPDIR=$(mktemp -d)
+          dpkg-deb -R "$DEB" "$TMPDIR"
+          sed -i '' 's/^Architecture: iphoneos-arm64$/Architecture: iphoneos-arm64e/' "$TMPDIR/DEBIAN/control"
+          dpkg-deb -b "$TMPDIR" "$DEB"
+          rm -rf "$TMPDIR"
+          # Rename deb to reflect arm64e
+          NEWNAME=$(echo "$DEB" | sed 's/iphoneos-arm64/iphoneos-arm64e/')
+          mv "$DEB" "$NEWNAME"
+          echo "package=$(basename "$NEWNAME")" >> "$GITHUB_OUTPUT"
+        id: arm64e_rename
+
       - name: Copy .deb to repo debs folder
-        run: cp "${{ github.workspace }}/main/packages/${{ steps.package_name.outputs.package }}" debs/
+        run: |
+          if [ "${{ matrix.mode }}" = "arm64e" ]; then
+            cp "${{ github.workspace }}/main/packages/${{ steps.arm64e_rename.outputs.package }}" debs/
+          else
+            cp "${{ github.workspace }}/main/packages/${{ steps.package_name.outputs.package }}" debs/
+          fi
 
       - name: Upload debs folder for commit job
         uses: actions/upload-artifact@v4
@@ -148,12 +173,18 @@ jobs:
           name: deb-rootfull
           path: debs/
 
+      - name: Download arm64e deb
+        uses: actions/download-artifact@v4
+        with:
+          name: deb-arm64e
+          path: debs/
+
       - name: Commit new .debs
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add debs/*.deb
-          git commit -m "chore: add NeoFreeBird rootless + rootfull debs [ci skip]" || echo "No changes to commit"
+          git commit -m "chore: add NeoFreeBird rootless + rootfull + arm64e debs [ci skip]" || echo "No changes to commit"
           git pull --rebase
           git push
         env:
