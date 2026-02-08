@@ -59,13 +59,8 @@ jobs:
         run: |
           echo "$(brew --prefix make)/libexec/gnubin" >> "$GITHUB_PATH"
 
-      - name: Download Theos
-        uses: actions/checkout@v4
-        with:
-          repository: theos/theos
-          ref: master
-          path: theos
-          submodules: recursive
+      - name: Setup Theos
+        uses: Randomblock1/theos-action@v1
 
       - name: iOS SDK Caching
         id: SDK
@@ -73,7 +68,7 @@ jobs:
         env:
           cache-name: iOS-${{ inputs.sdk_version }}-SDK
         with:
-          path: theos/sdks/
+          path: ${{ env.THEOS }}/sdks/
           key: ${{ env.cache-name }}
           restore-keys: ${{ env.cache-name }}
 
@@ -85,44 +80,35 @@ jobs:
           git sparse-checkout set --no-cone iPhoneOS${{ inputs.sdk_version }}.sdk
           git checkout
           mv ./*.sdk "${THEOS}/sdks"
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
-      - name: Get BHTwitter Version
+      - name: Get NeoFreeBird Version
         run: |
-          BHTWITTER_VERSION=$(awk '/Version:/ {print $2}' main/control)
-          echo "BHTWITTER_VERSION=${BHTWITTER_VERSION}" >> "$GITHUB_ENV"
-          echo "$BHTWITTER_VERSION"
+          NFB_VERSION=$(awk '/Version:/ {print $2}' main/control)
+          echo "NFB_VERSION=${NFB_VERSION}" >> "$GITHUB_ENV"
+          echo "$NFB_VERSION"
 
       - name: Build Package (${{ matrix.mode }})
         run: |
           cd ${{ github.workspace }}/main
           sed -i '' "s/^TARGET.*$/TARGET := iphone:clang:${{ inputs.sdk_version }}:${{ inputs.target_version }}/" Makefile
-          if [ "${{ matrix.mode }}" = "arm64e" ]; then
-            ./build.sh --rootless
+          if [ "${{ matrix.mode }}" = "rootfull" ]; then
+            sed -i '' '/^THEOS_PACKAGE_SCHEME/d' Makefile
+            unset THEOS_PACKAGE_SCHEME
+            make package FINALPACKAGE=1
+          elif [ "${{ matrix.mode }}" = "arm64e" ]; then
+            export THEOS_PACKAGE_SCHEME=rootless
+            make package FINALPACKAGE=1 ARCHS="arm64e"
           else
-            ./build.sh --${{ matrix.mode }}
+            export THEOS_PACKAGE_SCHEME=rootless
+            make package FINALPACKAGE=1
           fi
         env:
-          THEOS: ${{ github.workspace }}/theos
-          ARCHS: ${{ matrix.mode == 'arm64e' && 'arm64e' || 'arm64' }}
-
-      - name: Get package filename
-        id: package_name
-        run: |
-          echo "package=$(ls -t main/packages | head -n1)" >> "$GITHUB_OUTPUT"
-
-      - name: Upload .deb artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: NeoFreeBird-${{ matrix.mode }}_${{ env.BHTWITTER_VERSION }}
-          path: ${{ github.workspace }}/main/packages/${{ steps.package_name.outputs.package }}
-          if-no-files-found: error
+          THEOS_PACKAGE_SCHEME: ${{ matrix.mode == 'rootfull' && '' || 'rootless' }}
 
       - name: Patch arm64e deb architecture
         if: matrix.mode == 'arm64e'
         run: |
-          DEB="${{ github.workspace }}/main/packages/${{ steps.package_name.outputs.package }}"
+          DEB=$(ls -t main/packages/*.deb | head -n1)
           TMPDIR=$(mktemp -d)
           dpkg-deb -R "$DEB" "$TMPDIR"
           sed -i '' 's/^Architecture: iphoneos-arm64$/Architecture: iphoneos-arm64e/' "$TMPDIR/DEBIAN/control"
@@ -131,22 +117,24 @@ jobs:
           # Rename deb to reflect arm64e
           NEWNAME=$(echo "$DEB" | sed 's/iphoneos-arm64/iphoneos-arm64e/')
           mv "$DEB" "$NEWNAME"
-          echo "package=$(basename "$NEWNAME")" >> "$GITHUB_OUTPUT"
-        id: arm64e_rename
 
-      - name: Copy .deb to repo debs folder
+      - name: Get package filename
+        id: package_name
         run: |
-          if [ "${{ matrix.mode }}" = "arm64e" ]; then
-            cp "${{ github.workspace }}/main/packages/${{ steps.arm64e_rename.outputs.package }}" debs/
-          else
-            cp "${{ github.workspace }}/main/packages/${{ steps.package_name.outputs.package }}" debs/
-          fi
+          echo "package=$(ls -t main/packages/*.deb | head -n1)" >> "$GITHUB_OUTPUT"
 
-      - name: Upload debs folder for commit job
+      - name: Upload .deb artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: NeoFreeBird-${{ matrix.mode }}_${{ env.NFB_VERSION }}
+          path: ${{ steps.package_name.outputs.package }}
+          if-no-files-found: error
+
+      - name: Upload deb for commit job
         uses: actions/upload-artifact@v4
         with:
           name: nfb-deb-${{ matrix.mode }}
-          path: debs/*.deb
+          path: ${{ steps.package_name.outputs.package }}
 
   commit-debs:
     name: Commit .debs to repo
