@@ -1,4 +1,4 @@
-name: Build BTLoader (Rootless + Rootful)
+name: Build BTLoader (Rootless + Rootful + arm64e)
 
 on:
   push:
