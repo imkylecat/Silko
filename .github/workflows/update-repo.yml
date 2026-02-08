@@ -1,0 +1,66 @@
+name: Update Sileo Repo Indexes
+
+on:
+  push:
+    branches: [ main ]          # or master, whichever your default branch is
+    paths:
+      - 'debs/**'               # only trigger when .debs change (optional but nice)
+  workflow_dispatch:            # lets you run it manually from Actions tab too
+
+permissions:
+  contents: write               # needed to commit the updated Packages/Release back
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # full history so git commit works nicely
+
+      - name: Generate Packages file
+        run: |
+          dpkg-scanpackages --arch iphoneos-arm debs > Packages || true
+          # --arch iphoneos-arm is common for tweaks; change/remove if multi-arch
+          # || true prevents failure if no .debs yet
+
+      - name: Compress to Packages.bz2 (Sileo prefers this)
+        run: bzip2 -k -f Packages   # -k = keep original, -f = force overwrite
+
+      - name: (Optional) Update Release file hashes
+        run: |
+          # Simple static Release — you can make this dynamic if needed
+          cat > Release << EOF
+          Origin: YourName Repo
+          Label: YourName Repo
+          Suite: stable
+          Version: 1.0
+          Codename: ios
+          Architectures: iphoneos-arm
+          Components: main
+          Description: Personal repo with tweaks
+
+          $(printf " $(date -Ru)")  # or remove date line if you don't want it
+          EOF
+
+          # Optional: add SHA256/MD5 of Packages* (many repos skip this for simple personal ones)
+          echo "MD5Sum:" >> Release
+          md5sum Packages | awk '{print " " $1 "   " $(NF)}' >> Release
+          md5sum Packages.bz2 | awk '{print " " $1 "   " $(NF)}' >> Release
+
+          echo "SHA256:" >> Release
+          sha256sum Packages | awk '{print " " $1 "   " $(NF)}' >> Release
+          sha256sum Packages.bz2 | awk '{print " " $1 "   " $(NF)}' >> Release
+
+      - name: Commit updated indexes back to repo
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          
+          git add Packages Packages.bz2 Release || true
+          git commit -m "chore: update Packages & bz2 [ci skip]" || echo "No changes to commit"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # built-in token works here
