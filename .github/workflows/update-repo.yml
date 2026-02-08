@@ -47,14 +47,20 @@ jobs:
           $(printf " $(date -Ru)")  # or remove date line if you don't want it
           EOF
 
-          # Optional: add SHA256/MD5 of Packages* (many repos skip this for simple personal ones)
+          # Add SHA256/MD5 of Packages* with proper Debian format: hash size filename
           echo "MD5Sum:" >> Release
-          md5sum Packages | awk '{print " " $1 "   " $(NF)}' >> Release
-          md5sum Packages.bz2 | awk '{print " " $1 "   " $(NF)}' >> Release
+          for f in Packages Packages.bz2; do
+            hash=$(md5sum "$f" | awk '{print $1}')
+            size=$(wc -c < "$f" | tr -d ' ')
+            echo " ${hash} ${size} ${f}" >> Release
+          done
 
           echo "SHA256:" >> Release
-          sha256sum Packages | awk '{print " " $1 "   " $(NF)}' >> Release
-          sha256sum Packages.bz2 | awk '{print " " $1 "   " $(NF)}' >> Release
+          for f in Packages Packages.bz2; do
+            hash=$(sha256sum "$f" | awk '{print $1}')
+            size=$(wc -c < "$f" | tr -d ' ')
+            echo " ${hash} ${size} ${f}" >> Release
+          done
 
       - name: Commit updated indexes back to repo
         run: |
