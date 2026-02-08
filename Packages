@@ -48,6 +48,22 @@ Description: A client modification for Discord's mobile app.
 Author: CloudySn0w
 Name: BTLoader
 
+Package: com.socuul.scinsta
+Version: 1.0.0
+Architecture: iphoneos-arm
+Maintainer: SoCuul
+Installed-Size: 336
+Depends: mobilesubstrate
+Filename: debs/com.socuul.scinsta_1.0.0_iphoneos-arm.deb
+Size: 72876
+MD5sum: 789159e8e1210246bc85125317420101
+SHA1: d4ce56d4ed3c425c6a48e8f525202f10a710d164
+SHA256: fc0f3f8a43f941f2da8be34af80672a9e41f0ce38cad8a71b158e5be9fb08d40
+Section: Tweaks
+Description: A feature-rich tweak for Instagram on iOS!
+Author: SoCuul
+Name: SCInsta
+
 Package: com.amywhile.aemulo
 Version: 2.0-dd2a2db
 Architecture: iphoneos-arm64
@@ -97,4 +113,20 @@ Section: Tweaks
 Description: A client modification for Discord's mobile app.
 Author: CloudySn0w
 Name: BTLoader
+
+Package: com.socuul.scinsta
+Version: 1.0.0
+Architecture: iphoneos-arm64
+Maintainer: SoCuul
+Installed-Size: 336
+Depends: mobilesubstrate
+Filename: debs/com.socuul.scinsta_1.0.0_iphoneos-arm64.deb
+Size: 72962
+MD5sum: b71cfbd0fd84fce6304721c26a06d22d
+SHA1: f92047d4cb80da577460fefe373afc4f1fbba4ca
+SHA256: 7f53f4bf878fde3fca8bce6777a704ceed427aa86c97f16978de4e96fcaa2e35
+Section: Tweaks
+Description: A feature-rich tweak for Instagram on iOS!
+Author: SoCuul
+Name: SCInsta
 
