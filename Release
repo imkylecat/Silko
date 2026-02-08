@@ -3,14 +3,16 @@ Label: Silko
 Suite: stable
 Version: 1.0
 Codename: ios
-Architectures: iphoneos-arm64
+Architectures: iphoneos-arm iphoneos-arm64
 Components: main
 Description: Personal repo with tweaks
-
- Sun, 08 Feb 2026 05:25:39 +0000  # or remove date line if you don't want it
+Date: Sun, 08 Feb 2026 05:36:11 +0000
 MD5Sum:
- 764517a1d3160fc609f41b880054415d 1696 Packages
- d5b3bb0222d8a7fd8c5d051031ad8ac8 968 Packages.bz2
+ 7dca7b58bc3e71a55d8f3fffe2b6886a 1192 Packages
+ ae785365fd3fc0eb370dcafd39ca7766 732 Packages.bz2
 SHA256:
- ddcf4f6a42380dd6df4a0777a1750f8fe67b57894414dd5c1e6742e39eab498c 1696 Packages
- 398103ed9ede0c3dd910db5d5c8d864ac30ff75da86a0a417a7da6092f427a89 968 Packages.bz2
+ 8f4f685d0db7c594f6c3f96c1aa484a4049c35a4db73d6059f09fad4c092da84 1192 Packages
+ 09d621b1230414c3684f30cb0780e46d8fdbd09ed0b9c630cb786bb63c5bd490 732 Packages.bz2
+SHA512:
+ 369555cae41995b1b50efc71fa47751c3a1a95d5819b062404f007b58a76a0bd30c74064fc47a3fbac2ee6516fd6d95a918198f97786e9f15a36ebddd7b24b71 1192 Packages
+ bdf65578a886b8afd205b58b080deb08ebd60b44642a31a1e3a3ddca49d0c7998c249adb7f79d033ccd090301d804d70855768ac3a21d02e0a55dfa067bf364a 732 Packages.bz2
