@@ -1,13 +1,13 @@
-Origin: YourName Repo
-Label: YourName Repo
+Origin: Silko
+Label: Silko
 Suite: stable
 Version: 1.0
 Codename: ios
-Architectures: iphoneos-arm
+Architectures: iphoneos-arm iphoneos-arm64
 Components: main
 Description: Personal repo with tweaks
 
- Sun, 08 Feb 2026 02:44:30 +0000  # or remove date line if you don't want it
+ Sun, 08 Feb 2026 02:56:26 +0000  # or remove date line if you don't want it
 MD5Sum:
  d41d8cd98f00b204e9800998ecf8427e   Packages
  4059d198768f9f8dc9372dc1c54bc3c3   Packages.bz2
