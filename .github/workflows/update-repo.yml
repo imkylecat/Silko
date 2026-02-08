@@ -28,6 +28,25 @@ jobs:
           # Scan for both arm and arm64 architectures
           # || true prevents failure if no .debs yet
 
+      - name: Inject Sileo depiction URLs into Packages
+        run: |
+          # For each package, add SileoDepiction if a depiction JSON exists
+          REPO_URL="https://imkylecat.github.io/Silko"
+          TEMP_PKG=$(mktemp)
+          while IFS= read -r line; do
+            echo "$line" >> "$TEMP_PKG"
+            if [[ "$line" =~ ^Package:\ (.+) ]]; then
+              PKG_ID="${BASH_REMATCH[1]}"
+            fi
+            if [[ -z "$line" ]]; then
+              # End of stanza — inject depiction before the blank line if JSON exists
+              if [[ -f "depictions/${PKG_ID}/info.json" ]]; then
+                sed -i "/^Package: ${PKG_ID}$/a SileoDepiction: ${REPO_URL}/depictions/${PKG_ID}/info.json" "$TEMP_PKG"
+              fi
+            fi
+          done < Packages
+          mv "$TEMP_PKG" Packages
+
       - name: Compress to Packages.bz2 (Sileo prefers this)
         run: bzip2 -k -f Packages   # -k = keep original, -f = force overwrite
 
