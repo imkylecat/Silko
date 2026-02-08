@@ -1,0 +1,68 @@
+name: Fetch Aemulo Debs
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 12 * * 0" # weekly check every Sunday at noon UTC
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    name: Download latest Aemulo debs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch latest release debs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Get the latest release tag
+          RELEASE=$(gh api repos/Aemulo/Release/releases/latest --jq '.tag_name')
+          echo "Latest Aemulo release: ${RELEASE}"
+          echo "AEMULO_VERSION=${RELEASE}" >> "$GITHUB_ENV"
+
+          # Get all .deb asset download URLs
+          URLS=$(gh api repos/Aemulo/Release/releases/latest \
+            --jq '.assets[] | select(.name | endswith(".deb")) | .browser_download_url')
+
+          if [ -z "$URLS" ]; then
+            echo "No .deb assets found in latest release"
+            exit 1
+          fi
+
+          # Remove old Aemulo debs
+          rm -f debs/com.amywhile.aemulo_*.deb
+
+          # Download each .deb into debs/
+          echo "$URLS" | while read -r url; do
+            filename=$(basename "$url")
+            echo "Downloading ${filename}..."
+            curl -fSL -o "debs/${filename}" "$url"
+          done
+
+          echo "Downloaded debs:"
+          ls -la debs/com.amywhile.aemulo_*.deb
+
+      - name: Commit new debs
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add debs/*.deb
+          # Also stage removals of old debs
+          git add -u debs/
+          git diff --cached --quiet && echo "No changes — already up to date" && exit 0
+          git commit -m "chore: update Aemulo debs to ${AEMULO_VERSION} [ci skip]"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,6 +1,8 @@
 name: Build BTLoader (Rootless + Rootful)
 
 on:
+  schedule:
+    - cron: "0 12 * * 0" # weekly check every Sunday at noon UTC
   workflow_dispatch:
     inputs:
       commit_id:
