@@ -5,10 +5,10 @@ Maintainer: Amy While <support@anamy.gay>
 Installed-Size: 1968
 Depends: firmware (>= 14.0)
 Filename: debs/com.amywhile.aemulo_2.0-dd2a2db_iphoneos-arm.deb
-Size: 611574
-MD5sum: 3a72a091a30118306024edc9c27c9678
-SHA1: 043ab41400b3b31bb514d0f5e696db42e8a9b738
-SHA256: ab2aae6a539e34c0955b744c8bb57f6cdddfc533a4334c1b3699b460ac432066
+Size: 611632
+MD5sum: ce2099aecef9ffaac4471a43989b29d1
+SHA1: e5ecfbb99f231888fc25e8b9dd4301da43792141
+SHA256: 884fa149455b485900aee68051fbea3d3d99be8aa0c01f62b3ea11668ae12ff2
 Section: Utilities
 Description: NFC Frickery
 Author: Amy While <support@anamy.gay>
@@ -55,10 +55,10 @@ Maintainer: Amy While <support@anamy.gay>
 Installed-Size: 1968
 Depends: firmware (>= 14.0)
 Filename: debs/com.amywhile.aemulo_2.0-dd2a2db_iphoneos-arm64.deb
-Size: 612052
-MD5sum: 45059cbf3eb2dd7a2db393fb3ae71dce
-SHA1: 75981df535ab93f57de053acc181c3aec70fca9c
-SHA256: 6d4d7a52a0328b7801a7a1accc49f085de4ef16536a6900a780dc1f08b09b329
+Size: 612040
+MD5sum: 9710660a8e1ca90b8b8f23299cebebd2
+SHA1: f9b8fbdb5eaab0e571a5eeba9bb0d7f3e4c40343
+SHA256: 37e4b77393fde67ce7bbe6ed269599f3f76045f8d83ca69c77b674f6e0349843
 Section: Utilities
 Description: NFC Frickery
 Author: Amy While <support@anamy.gay>
@@ -93,23 +93,6 @@ Size: 29308
 MD5sum: 2fa65d7040fc2c1102995c386c616fa0
 SHA1: e46d43b96c656acb4d5789a7d68fde702c7c89ae
 SHA256: bebd5e48bcef0f280962135db5a96adbb8e65a2e2c7396ece9a2a85bc04323d2
-Section: Tweaks
-Description: A client modification for Discord's mobile app.
-Author: CloudySn0w
-Name: BTLoader
-
-Package: com.cloudysnow.btloader
-Version: 1.0.2
-Architecture: iphoneos-arm64e
-Maintainer: CloudySn0w
-Installed-Size: 168
-Depends: mobilesubstrate (>= 0.9.5000)
-Conflicts: app.enmity, mod.vendetta, app.unbound
-Filename: debs/com.cloudysnow.btloader_1.0.2_iphoneos-arm64e.deb
-Size: 29424
-MD5sum: b3146ae868425f5a1aa798eb0eab38a3
-SHA1: 186d8a8c8484522839e70b30c6e6ea4699462292
-SHA256: 4958d31b9a768ed5d5a89862a9978c2f39d004461c7428f8f11762932ffc0bbb
 Section: Tweaks
 Description: A client modification for Discord's mobile app.
 Author: CloudySn0w
