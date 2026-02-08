@@ -39,10 +39,10 @@ Installed-Size: 168
 Depends: mobilesubstrate (>= 0.9.5000)
 Conflicts: app.enmity, mod.vendetta, app.unbound
 Filename: debs/com.cloudysnow.btloader_1.0.2_iphoneos-arm64.deb
-Size: 29032
-MD5sum: be6a5ac6c9c6a4e4e7acecd0495ea279
-SHA1: 3ae57d8d1f3d59fe041c7f5a49a080835f50b5d5
-SHA256: 0b6f7ae53fe2bfc3e1f9e1b5fae5b3243058160f4b81b48023461c45bb2e390d
+Size: 29026
+MD5sum: 332039935ab24807def05766f49da8fb
+SHA1: 2d0c979b2c60df8099d87f68554644cd296476f3
+SHA256: 515bd75411e473144e7fb06cb5bb549fd33d53df41bb2ed8384ccc8391fcce76
 Section: Tweaks
 Description: A client modification for Discord's mobile app.
 Author: CloudySn0w
