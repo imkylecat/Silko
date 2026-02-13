@@ -46,6 +46,13 @@ jobs:
         run: |
           brew install make dpkg ldid libarchive openssl@3
           echo "$(brew --prefix make)/libexec/gnubin" >> "$GITHUB_PATH"
+          echo "PKG_CONFIG_PATH=$(brew --prefix openssl@3)/lib/pkgconfig" >> "$GITHUB_ENV"
+
+      - name: Clone ChOma (missing dependency)
+        run: git clone --depth=1 https://github.com/opa334/ChOma.git main/ChOma
+
+      - name: Build fastPathSign (host codesign tool)
+        run: make -C main/Exploits/fastPathSign
 
       - name: Download Theos
         uses: actions/checkout@v4
