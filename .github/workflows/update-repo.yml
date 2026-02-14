@@ -13,7 +13,6 @@ on:
       - "Build BTLoader (Rootless + Rootful)"
       - "Build BHTwitter (Rootless + Rootful)"
       - "Build SCInsta (Rootless + Rootful)"
-      - "Build CarBridge (Rootless + Rootful)"
     types:
       - completed
     branches:
