@@ -5,10 +5,10 @@ Maintainer: Amy While <support@anamy.gay>
 Installed-Size: 1968
 Depends: firmware (>= 14.0)
 Filename: debs/com.amywhile.aemulo_2.0-dd2a2db_iphoneos-arm.deb
-Size: 611572
-MD5sum: 460efa73447d1d131ae712e292bdb1be
-SHA1: 1cc80192eb700e6d1f3682ab07a78209b2e5006f
-SHA256: 79a4b152b43bac27a0c6ebdb938e6e9e918a383a9d46b5a25118be89e7d1bdab
+Size: 611636
+MD5sum: b82c22ae6fbd0f266be042c1d4fbfa6a
+SHA1: 66859855beaea0d12e4220fdc6563d31bbd25658
+SHA256: 7bfb10efa04e5a92109fd0d69eef77d7954944bd0d8f79e9f68bfdf2c61a4d00
 Section: Utilities
 Description: NFC Frickery
 Author: Amy While <support@anamy.gay>
@@ -39,10 +39,10 @@ Installed-Size: 168
 Depends: mobilesubstrate (>= 0.9.5000)
 Conflicts: app.enmity, mod.vendetta, app.unbound
 Filename: debs/com.cloudysnow.btloader_1.0.2_iphoneos-arm.deb
-Size: 28968
-MD5sum: 2e318922b7fc75fe6b54d6ea6bc31bde
-SHA1: 0a22f5df8f0a570c094fb2af2814cbee17febc73
-SHA256: 0c5eb243a2f3b135d6bf0751fc9be86519d6c3a28db9ed32b8e5b2091118fbfe
+Size: 28960
+MD5sum: bd8e5d902a36556791aea04aa4c8db08
+SHA1: 26ceb5dacfbae508e7b12c790aa0a26f4bb46109
+SHA256: 7226a50cefdff7677fbc878aa582dcd636b3016ee0edf3849a4d412cd765fd3d
 Section: Tweaks
 Description: A client modification for Discord's mobile app.
 Author: CloudySn0w
@@ -55,10 +55,10 @@ Maintainer: SoCuul
 Installed-Size: 336
 Depends: mobilesubstrate
 Filename: debs/com.socuul.scinsta_1.0.0_iphoneos-arm.deb
-Size: 72876
-MD5sum: 789159e8e1210246bc85125317420101
-SHA1: d4ce56d4ed3c425c6a48e8f525202f10a710d164
-SHA256: fc0f3f8a43f941f2da8be34af80672a9e41f0ce38cad8a71b158e5be9fb08d40
+Size: 72918
+MD5sum: d36406b409878bbd30851deee23bc866
+SHA1: 9b8f34dcebd8741e7fd2a3af5c79f4e53eb53ea7
+SHA256: 8779ead641ef1d1fc0af453bf889d741a4a8de781fd214a9e8c931ad36242dd7
 Section: Tweaks
 Description: A feature-rich tweak for Instagram on iOS!
 Author: SoCuul
@@ -71,10 +71,10 @@ Maintainer: Amy While <support@anamy.gay>
 Installed-Size: 1968
 Depends: firmware (>= 14.0)
 Filename: debs/com.amywhile.aemulo_2.0-dd2a2db_iphoneos-arm64.deb
-Size: 612042
-MD5sum: b36eb7c6786cc08ef1eb2543a1d6734c
-SHA1: 7ee2a866887c334650283fc32c9ecf1fed66a2de
-SHA256: ca7311d8299e325275dee6eecc6dc62fcb735981caa31217461276e3f95b1c34
+Size: 612040
+MD5sum: 1e712c211fe6736400a0547c53155ed4
+SHA1: fd4906952acce6187eae7ba4c7b6a9825a6d24b2
+SHA256: 76026c3c7563cf4219a1fd5d532cf3f6b3896b4dd475073899bc607019440faf
 Section: Utilities
 Description: NFC Frickery
 Author: Amy While <support@anamy.gay>
@@ -105,10 +105,10 @@ Installed-Size: 168
 Depends: mobilesubstrate (>= 0.9.5000)
 Conflicts: app.enmity, mod.vendetta, app.unbound
 Filename: debs/com.cloudysnow.btloader_1.0.2_iphoneos-arm64.deb
-Size: 29038
-MD5sum: a6bb29da48b19e140eed3fb880cba010
-SHA1: 02963da0cdb715a0a23177590048bf40463b2f36
-SHA256: 924967bc02157d6d3a22fb079263176d867a88ee5a5d4e9b3bee7618f48226fe
+Size: 29044
+MD5sum: cbb20c7f486b93abdcbb8fed5d76d875
+SHA1: c40f5b2b22d3854b14d8a871ee4c844b955e0833
+SHA256: b5d80049e2a9d88d43a620610d19d3253369d7cf320fb09d04c5bdd68f1b0404
 Section: Tweaks
 Description: A client modification for Discord's mobile app.
 Author: CloudySn0w
@@ -121,10 +121,10 @@ Maintainer: SoCuul
 Installed-Size: 336
 Depends: mobilesubstrate
 Filename: debs/com.socuul.scinsta_1.0.0_iphoneos-arm64.deb
-Size: 72962
-MD5sum: b71cfbd0fd84fce6304721c26a06d22d
-SHA1: f92047d4cb80da577460fefe373afc4f1fbba4ca
-SHA256: 7f53f4bf878fde3fca8bce6777a704ceed427aa86c97f16978de4e96fcaa2e35
+Size: 73122
+MD5sum: 475e5caff55aebca227e18880a30bd8f
+SHA1: 895be39b56f7e91cc0530d509a9164dde81bcc5a
+SHA256: 1405d6d04feb09d8efe35c4f4592aa54c88a3c22068663154c23401ecae93e84
 Section: Tweaks
 Description: A feature-rich tweak for Instagram on iOS!
 Author: SoCuul
