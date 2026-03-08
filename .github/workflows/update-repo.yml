@@ -11,6 +11,7 @@ on:
     workflows: 
       - "Fetch Aemulo Debs"
       - "Build BTLoader (Rootless + Rootful)"
+      - "Build KettuTweak (Rootless + Rootful)"
       - "Build BHTwitter (Rootless + Rootful)"
       - "Build SCInsta (Rootless + Rootful)"
     types:
