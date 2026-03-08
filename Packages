@@ -1,3 +1,20 @@
+Package: cocobo1.kettu.tweak
+Version: 1.0.0
+Architecture: iphoneos-arm
+Maintainer: cocobo1
+Installed-Size: 168
+Depends: mobilesubstrate (>= 0.9.5000)
+Conflicts: app.enmity, mod.vendetta, app.unbound, com.cloudysnow.btloader
+Filename: debs/cocobo1.kettu.tweak_1.0.0_iphoneos-arm.deb
+Size: 28920
+MD5sum: d62251dc42f867cd23553aef0de98b40
+SHA1: 02ab4939c9b4563cf042e398f68fe4730d194796
+SHA256: 46457751e5399905550452ae6e6c607293d7ab7c18bf36909970ced6aeac5291
+Section: Tweaks
+Description: A tweak to inject Kettu into Discord
+Author: cocobo1
+Name: KettuTweak
+
 Package: com.amywhile.aemulo
 Version: 2.0-dd2a2db
 Architecture: iphoneos-arm
@@ -64,6 +81,23 @@ Homepage: https://github.com/SoCuul/SCInsta
 Description: A feature-rich tweak for Instagram on iOS!
 Author: SoCuul
 Name: SCInsta
+
+Package: cocobo1.kettu.tweak
+Version: 1.0.0
+Architecture: iphoneos-arm64
+Maintainer: cocobo1
+Installed-Size: 168
+Depends: mobilesubstrate (>= 0.9.5000)
+Conflicts: app.enmity, mod.vendetta, app.unbound, com.cloudysnow.btloader
+Filename: debs/cocobo1.kettu.tweak_1.0.0_iphoneos-arm64.deb
+Size: 29016
+MD5sum: 750112f45f82ce31931d6e1422db04cc
+SHA1: 5fe0889d43b27370cc9580d045df621c3557a5d7
+SHA256: 7f2731699797954472922d7a0d6f35e263f9353ca3fc4be8021a42d04ddb04b1
+Section: Tweaks
+Description: A tweak to inject Kettu into Discord
+Author: cocobo1
+Name: KettuTweak
 
 Package: com.amywhile.aemulo
 Version: 2.0-dd2a2db
