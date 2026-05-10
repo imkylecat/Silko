@@ -6,10 +6,10 @@ Installed-Size: 168
 Depends: mobilesubstrate (>= 0.9.5000)
 Conflicts: app.enmity, mod.vendetta, app.unbound, com.cloudysnow.btloader, app.pyoncord
 Filename: debs/cocobo1.kettu.tweak_2.0.0_iphoneos-arm.deb
-Size: 29012
-MD5sum: 212886323d529c5feb276d24cbbf28fd
-SHA1: f27076642285dc29af314ee6b1d20d25282aeeb0
-SHA256: 5b9d7ad66a2416c152f4923358b29182d0ae7d038f4dbd118bca8e89e1e081b8
+Size: 29048
+MD5sum: e0552aa5661355e1a9a50ca6e4e1c7e7
+SHA1: a5ae682d6777dbbee73c8015554116a956e846ee
+SHA256: 61b8fb1603c8911ac93749bd16978dacff1c57a5feca6eab8e4d60009e68da8a
 Section: Tweaks
 Description: A tweak to inject Kettu into Discord
 Author: cocobo1
@@ -22,10 +22,10 @@ Maintainer: Amy While <support@anamy.gay>
 Installed-Size: 1968
 Depends: firmware (>= 14.0)
 Filename: debs/com.amywhile.aemulo_2.0-dd2a2db_iphoneos-arm.deb
-Size: 611616
-MD5sum: 97c001e1f9e9f2af1e2f1c2e8fd0a053
-SHA1: 830d0c7e9625d518f836e4ffacf50cf11196345a
-SHA256: cfc47ffcade100cf012a217aa2fce74eb71c88dafe8db832dff9d986f8e04f33
+Size: 611624
+MD5sum: 4dddc53c4dd3920bad2a46eabfa83e95
+SHA1: 23762c80bd939e4155e3ed9d3d72e946a6872fb6
+SHA256: 02f7de558cd2990ddf00e55b190b82604bb088d375a9dfe85923284295c2037b
 Section: Utilities
 Description: NFC Frickery
 Author: Amy While <support@anamy.gay>
@@ -39,10 +39,10 @@ Installed-Size: 19616
 Depends: mobilesubstrate, ws.hbang.common
 Conflicts: com.den.twigalaxy, xyz.cypwn.twigalaxy, xyz.cypwn.bhtwitter, com.netskao.twitternoads, xyz.cypwn.bringbacktwitter
 Filename: debs/com.bandarhl.bhtwitter_5.2_iphoneos-arm.deb
-Size: 7156912
-MD5sum: 5656ba54c84f307a124b916ca3d1d59d
-SHA1: 7dd18beb3536df456a198e2e6dcea965da6c4f09
-SHA256: 39449e970a42bdde234574ae6d25ce2c0db527504d1e461b72e1a4d64d221a3e
+Size: 7159232
+MD5sum: d76157469e38d70adc1c3f8f035d4f37
+SHA1: e22925ca0254046d822502854a0d130225e32008
+SHA256: 8c553b3b82b0a6840c0c62614d1fc4e94d61547a7b890273196b3c7b0aa832e8
 Section: Tweaks
 Description: Awesome tweak for Twitter
 Author: NeoFreeBird
@@ -56,10 +56,10 @@ Installed-Size: 168
 Depends: mobilesubstrate (>= 0.9.5000)
 Conflicts: app.enmity, mod.vendetta, app.unbound
 Filename: debs/com.cloudysnow.btloader_1.0.2_iphoneos-arm.deb
-Size: 29026
-MD5sum: 12c3492724aa0ae1f0db6b6b0b738f03
-SHA1: 061f60319e7605a8c9ff07d0f3729fd82489f1b2
-SHA256: dca6227082a6d0ba28b3bc342d999ba72b96b4e4708d9386a50ab1bc629595b9
+Size: 28960
+MD5sum: 94884db929d83383dee63283062ef7c4
+SHA1: 6d3d5d2cb6a78e040c9ae2b012b2a45396f7cc12
+SHA256: be5b95f850f928e56a77f7044fa41ca05230a5816e9871771b79cfc55cb6aba9
 Section: Tweaks
 Description: A client modification for Discord's mobile app.
 Author: CloudySn0w
@@ -72,10 +72,10 @@ Maintainer: SoCuul
 Installed-Size: 336
 Depends: mobilesubstrate
 Filename: debs/com.socuul.scinsta_1.1.1_iphoneos-arm.deb
-Size: 78548
-MD5sum: 238921eff26c082d455522b530d2ec8a
-SHA1: 1e094ed2bf1e50f18a546a7cd1c9ef24ebcb8c5f
-SHA256: 3ecf933beae394955c1c28e843315a787c41ccf25415ab728fdb32b25a3c0546
+Size: 78502
+MD5sum: 244e412533b6ad1147f73af2987628cc
+SHA1: 6c8c7649de181a6b10b0518f3cec6b69bebe980d
+SHA256: eff59665e80705a5bb4cfb70f43a3a9d9a8e8bd51e9aee373dde315006bb8eb8
 Section: Tweaks
 Homepage: https://github.com/SoCuul/SCInsta
 Description: A feature-rich tweak for Instagram on iOS!
@@ -91,9 +91,9 @@ Depends: mobilesubstrate (>= 0.9.5000)
 Conflicts: app.enmity, mod.vendetta, app.unbound, com.cloudysnow.btloader, app.pyoncord
 Filename: debs/cocobo1.kettu.tweak_2.0.0_iphoneos-arm64.deb
 Size: 29116
-MD5sum: 228ed9a1b51934cfb7285c86501c3472
-SHA1: dd073d70ea55fa9c0530d5de0e0d671b6540431a
-SHA256: 9f13ee236b1abe7b71a163146d6c3d1ae8df22ed6e29d11a5fee508b6e8a00b6
+MD5sum: 76380aeffaf0e82eed152630e5c860e7
+SHA1: c5e45b3eac1d07df3bc64a154416929238cd08bc
+SHA256: b2677e75a939091757eeede6a4b385956ebb2ed220cb85045b343670f6e684e9
 Section: Tweaks
 Description: A tweak to inject Kettu into Discord
 Author: cocobo1
@@ -106,10 +106,10 @@ Maintainer: Amy While <support@anamy.gay>
 Installed-Size: 1968
 Depends: firmware (>= 14.0)
 Filename: debs/com.amywhile.aemulo_2.0-dd2a2db_iphoneos-arm64.deb
-Size: 612054
-MD5sum: f3af3d34a67638676ff3b2c862154a08
-SHA1: 802f65a4993bcb53a8548a7993a818e711861ca8
-SHA256: 04c48abaa4ca1a35412e73586a22968de7fbc2c4f1ca440d55a9c17a96d8de4b
+Size: 612020
+MD5sum: d1e9db207473893fa5ee5b5498c0f81b
+SHA1: 8ea67cdfd0c5d2e9360d4de2a7484b9c9eb5dccb
+SHA256: a5e795397329c9b9c80be08297ff12d99070b37de3486c638b0300629001c5a0
 Section: Utilities
 Description: NFC Frickery
 Author: Amy While <support@anamy.gay>
@@ -123,10 +123,10 @@ Installed-Size: 19616
 Depends: mobilesubstrate, ws.hbang.common
 Conflicts: com.den.twigalaxy, xyz.cypwn.twigalaxy, xyz.cypwn.bhtwitter, com.netskao.twitternoads, xyz.cypwn.bringbacktwitter
 Filename: debs/com.bandarhl.bhtwitter_5.2_iphoneos-arm64.deb
-Size: 7152512
-MD5sum: bae1c854182de3922d247a597402c02b
-SHA1: 60c76be9c064b0b6b5ead87bcb258ab15900a694
-SHA256: 6b1782a051d2a16c54f5cc145e1655847a2eab90c2c997f2dcbc775380dec773
+Size: 7161048
+MD5sum: 7b543d88ecdda1dee5e448182b2afb0c
+SHA1: 46421394d84f2ffbfd72722277523d7b4e779659
+SHA256: f8ba9bb06ec60209e966531b7a9ba616c4fbce965e63f67d049825d8c38d90cd
 Section: Tweaks
 Description: Awesome tweak for Twitter
 Author: NeoFreeBird
@@ -140,10 +140,10 @@ Installed-Size: 168
 Depends: mobilesubstrate (>= 0.9.5000)
 Conflicts: app.enmity, mod.vendetta, app.unbound
 Filename: debs/com.cloudysnow.btloader_1.0.2_iphoneos-arm64.deb
-Size: 29022
-MD5sum: 1181a17c25edde52a840bb7e453d59ac
-SHA1: ec4f244da2ddaed04bd1d6887e20dba84b4f21c8
-SHA256: 6662739548b1c159e60686d519eaf3c00ecc86679f4011d65f9cecdf05103a4b
+Size: 29040
+MD5sum: 28c41d7d06dfe87629576a3e043378a7
+SHA1: ee4844c890601713fe921db8653c918061fd4c4e
+SHA256: 8eb13db84381afd8b64918f3ce448879da46dba85b6339394e071cefc5f2be27
 Section: Tweaks
 Description: A client modification for Discord's mobile app.
 Author: CloudySn0w
@@ -156,10 +156,10 @@ Maintainer: SoCuul
 Installed-Size: 336
 Depends: mobilesubstrate
 Filename: debs/com.socuul.scinsta_1.1.1_iphoneos-arm64.deb
-Size: 78584
-MD5sum: d7487300bfb55f6d4477ccf366718167
-SHA1: db518f8cc11a815ef0428701d039ec701ff99de9
-SHA256: f61bfcb272702009fef95e32561313755aa942bf1ffbd46bac8c73512d340441
+Size: 78612
+MD5sum: 9bd70493fa0429fcfda858b005890587
+SHA1: e04ee9c4be22fe6909ed0657d96fb7aa88afd073
+SHA256: 197c71c766f0c570ad88b3ea9b6c49488dd1c8cb51a15c52ae6baddd1fe7e3e2
 Section: Tweaks
 Homepage: https://github.com/SoCuul/SCInsta
 Description: A feature-rich tweak for Instagram on iOS!
